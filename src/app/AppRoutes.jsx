@@ -1,16 +1,21 @@
-import { createBrowserRouter, redirect } from 'react-router-dom';
-import Reg from '../pages/reg/ui/index.jsx';
-import Auth from '../pages/auth/ui/index.jsx';
+import { createBrowserRouter } from 'react-router-dom';
+import Reg from '../pages/reg';
+import Auth from '../pages/auth';
+import Home from '../pages/home';
 
 const routes = createBrowserRouter([
-    {
-        path: '/reg',
-        element: <Reg/>,
-    },
-    {
-        path: '/auth',
-        element: <Auth/>,
-    }
+  {
+    path: '/',
+    element: <Home />,
+  },
+  {
+    path: '/auth',
+    element: <Auth />,
+  },
+  {
+    path: '/registration',
+    element: <Reg />,
+  },
 ]);
 
 export default routes;
