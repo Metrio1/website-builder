@@ -1,9 +1,22 @@
 import './index.scss';
 import { Link } from 'react-router-dom';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 
 export default function Auth() {
-  const handleClick = () => console.log('Авторизация прошла успешно');
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    validationSchema: Yup.object({
+      email: Yup.string().required('Required'),
+      password: Yup.string().required('Required'),
+    }),
+    onSubmit: (values) => {
+      console.log(JSON.stringify(values, null, 2));
+    },
+  });
 
   return (
     <main>
@@ -11,41 +24,30 @@ export default function Auth() {
       <div className="authorization">
         <h1 className="authorization__header">Авторизация</h1>
         <div className="authorization__content">
-          <Formik
-            initialValues={{ email: '', password: '' }}
-            validate={(values) => {
-              const errors = {};
-              if (!values.email) {
-                errors.email = 'Required';
-              } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-                errors.email = 'Invalid email address';
-              }
-              if (!values.password) {
-                errors.password = 'Required';
-              }
-              return errors;
-            }}
-            onSubmit={(values, { setSubmitting }) => {
-              setTimeout(() => {
-                console.log(JSON.stringify(values, null, 2));
-                setSubmitting(false);
-              }, 400);
-            }}
-          >
-            {({ isSubmitting }) => (
-              <Form className="form-hook">
-                <label htmlFor="email">Email</label>
-                <Field type="email" name="email" />
-                <ErrorMessage name="email" component="div" />
-                <label htmlFor="password">Password</label>
-                <Field type="password" name="password" />
-                <ErrorMessage name="password" component="div" />
-                <button type="submit" disabled={isSubmitting}>
-                  Submit
-                </button>
-              </Form>
-            )}
-          </Formik>
+          <form className="form-hook" onSubmit={formik.handleSubmit}>
+            <label htmlFor="email">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              onChange={formik.handleChange}
+              value={formik.values.email}
+            />
+            {formik.touched.email && formik.errors.email ? <div>{formik.errors.email}</div> : null}
+
+            <label htmlFor="password">Password</label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              onChange={formik.handleChange}
+              value={formik.values.firstName}
+            />
+            {formik.touched.password && formik.errors.password ? (
+              <div>{formik.errors.password}</div>
+            ) : null}
+            <button type="submit">Submit</button>
+          </form>
         </div>
       </div>
     </main>
