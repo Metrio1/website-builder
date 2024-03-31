@@ -1,0 +1,48 @@
+main {
+  display: block;
+}
+
+.start {
+
+  &__header {
+    height: 60px;
+    background-color: gray;
+  }
+
+  &__banner {
+    height: 40%;
+    width: 100%;
+    background-color: #cccccc;
+  }
+
+  &__main-title {
+    text-align: center;
+    font-size: 50px;
+    padding-top: 1%;
+
+  }
+
+  &__slogan {
+    padding: 5% 25% 5% 25%;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+  }
+
+  &__slogan-text {
+    font-size: 30px;
+  }
+
+  &__main-button {
+
+  }
+
+  &__description {
+
+  }
+
+  &__description-title {
+    padding: 2%;
+    text-align: center;
+  }
+}
+

@@ -1,0 +1,47 @@
+* {
+  //height: 100%;
+}
+
+html, body, #root{
+  height: 100%;
+}
+
+.first-layout {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 80px 1fr 80px;
+
+  &__header {
+    background-color: #656565;
+  }
+
+  &__main {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+
+  }
+
+  &__container {
+    background-color: #9b9b9b;
+  }
+
+  &__aside {
+
+  }
+
+  &__footer {
+    background-color: #bbbbbb;
+  }
+
+  @media screen and (max-width: 800px) {
+    &__aside {
+      display: none;
+    }
+  }
+
+}
+
+
+
+

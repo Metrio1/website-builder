@@ -1,9 +1,44 @@
 import './index.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { regValidation } from '../lib/index.js';
+// import { useCreateUserQuery } from '../../../entities/user/api/user.api.js';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { useAuthMutation, useCreateUserMutation } from '../../../entities/user/api/api.js';
+import { useState } from 'react';
+import { redirect } from 'react-router-dom';
 
-export default function Reg() {
+export default function Reg(values) {
+  const navigate = useNavigate();
+
+  const [user, setUser] = useState(values);
+
+  const [createUser] = useCreateUserMutation();
+
+  // const [createUser] = useCreateUserMutation();
+
+  const onFormSubmit = (values) => {
+    console.log(JSON.stringify(values, null, 2));
+    // console.log(data);
+    createUser(values)
+      .unwrap()
+      .then((payload) => {
+        console.log('fulfilled', payload);
+        navigate('/auth');
+      })
+      .catch((error) => console.error('rejected', error));
+    // navigate('/auth');
+    // createUser(user)
+    //   .unwrap()
+    //   .then(() => {
+    //     setUser(values);
+    //     navigate('/auth');
+    //   })
+    //   .catch((error) => console.error('rejected', error));
+    formik.resetForm();
+  };
+
   const formik = useFormik({
     initialValues: {
       firstName: '',
@@ -11,31 +46,11 @@ export default function Reg() {
       login: '',
       email: '',
       password: '',
-      confirmPassword: '',
+      re_password: '',
+      regValidation: '',
     },
-    validationSchema: Yup.object({
-      firstName: Yup.string()
-        .min(4, 'Must be 4 characters or more')
-        .max(15, 'Must be 15 characters or less')
-        .required('Required'),
-      lastName: Yup.string()
-        .min(4, 'Must be 4 characters or more')
-        .max(20, 'Must be 20 characters or less')
-        .required('Required'),
-      login: Yup.string()
-        .min(4, 'Must be 4 characters or more')
-        .max(20, 'Must be 20 characters or less')
-        .required('Required'),
-      email: Yup.string().email('Invalid email address').required('Required'),
-      password: Yup.string()
-        .min(8, 'Must be 8 characters or more')
-        .max(32, 'Must be 32 characters or less')
-        .required('Required'),
-      confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match'),
-    }),
-    onSubmit: (values) => {
-      console.log(JSON.stringify(values, null, 2));
-    },
+    validationSchema: regValidation,
+    onSubmit: onFormSubmit,
   });
 
   return (
@@ -56,7 +71,6 @@ export default function Reg() {
             {formik.touched.firstName && formik.errors.firstName ? (
               <div>{formik.errors.firstName}</div>
             ) : null}
-
             <label htmlFor="lastName">Last name</label>
             <input
               id="lastName"
@@ -68,7 +82,6 @@ export default function Reg() {
             {formik.touched.lastName && formik.errors.lastName ? (
               <div>{formik.errors.lastName}</div>
             ) : null}
-
             <label htmlFor="login">Login</label>
             <input
               id="login"
@@ -78,7 +91,6 @@ export default function Reg() {
               value={formik.values.login}
             />
             {formik.touched.login && formik.errors.login ? <div>{formik.errors.login}</div> : null}
-
             <label htmlFor="email">Email</label>
             <input
               id="email"
@@ -88,7 +100,6 @@ export default function Reg() {
               value={formik.values.email}
             />
             {formik.touched.email && formik.errors.email ? <div>{formik.errors.email}</div> : null}
-
             <label htmlFor="password">Password</label>
             <input
               id="password"
@@ -100,17 +111,17 @@ export default function Reg() {
             {formik.touched.password && formik.errors.password ? (
               <div>{formik.errors.password}</div>
             ) : null}
-
-            <label htmlFor="confirmPassword">Confirm password</label>
+            <label htmlFor="re_password">Confirm password</label>
             <input
-              id="confirmPassword"
-              name="confirmPassword"
+              id="re_password"
+              name="re_password"
               type="password"
               onChange={formik.handleChange}
-              value={formik.values.confirmPassword}
+              value={formik.values.re_password}
             />
-            {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
-              <div>{formik.errors.confirmPassword}</div>
+
+            {formik.touched.re_password && formik.errors.re_password ? (
+              <div>{formik.errors.re_password}</div>
             ) : null}
             <button type="submit">Submit</button>
           </form>
