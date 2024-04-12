@@ -1,0 +1,107 @@
+//* {
+//  box-sizing: border-box;
+//}
+//
+//:root {
+//  --sgcms-header-def-height: 80px;
+//  --sgcms-header-sm-height: 60px;
+//  --sgcms-sidebar-def-width: 280px;
+//}
+//
+//html, body, #root{
+//  height: 100dvh;
+//  scrollbar-gutter: stable;
+//  box-sizing: border-box;
+//  overflow: visible;
+//}
+//
+//.sgcms-layout {
+//  display: flex;
+//  flex-direction: column;
+//  height: 100%;
+//  width: 100%;
+//
+//  &__header-container {
+//    background-color: #4c4c4c;
+//    box-sizing: border-box;
+//    padding: 10px 15px;
+//    position: sticky;
+//    top: 0;
+//    z-index: 10;
+//    width: 100%;
+//    min-height: var(--sgcms-header-def-height);
+//  }
+//
+//  &__main {
+//    display: flex;
+//    flex: 1 0 auto;
+//    @media screen and (min-width: 800px) {
+//      &__sidebar-container {
+//        top: 0;
+//        position: sticky;
+//        margin-top: calc(var(--sgcms-header-def-height) * -1);
+//        background-color: #2a2a2a;
+//        width: var(--sgcms-sidebar-def-width);
+//        max-height: 100vh;
+//        height: 100%;
+//        box-sizing: border-box;
+//        //transition: transform 0.5s ease-in-out;
+//
+//        &__list-container {
+//          flex-direction: column;
+//          padding-top: var(--sgcms-header-def-height);
+//          height: 100%;
+//          width: 100%;
+//          display: flex;
+//          box-sizing: border-box;
+//
+//          &__wrapper {
+//            overflow: auto;
+//            box-sizing: border-box;
+//            height: 100%;
+//
+//            &-block {
+//              display: block;
+//              height: 150px;
+//              width: 100%;
+//              background-color: #dadada;
+//            }
+//          }
+//        }
+//      }
+//    }
+//    @media (min-width: 800px) {
+//      &__main-container {
+//        flex-grow: 1;
+//        max-width: calc(100% - var(--sgcms-sidebar-def-width));
+//      }
+//
+//
+//    }
+//    @media (max-width: 800px) {
+//      &__sidebar-container__list-container__wrapper-block {
+//        background-color: black;
+//        display: none;
+//      }
+//    }
+//
+//    &__main-container {
+//      width: 100%;
+//    }
+//
+//  }
+//  &__footer-container {
+//    box-sizing: border-box;
+//    padding: 10px 15px;
+//    background-color: #706f6f;
+//    min-height: 80px;
+//    width: 100%;
+//  }
+//}
+//
+//.asd {
+//  height: 150px;
+//  width: 100%;
+//  background-color: #dadada;
+//}
+//

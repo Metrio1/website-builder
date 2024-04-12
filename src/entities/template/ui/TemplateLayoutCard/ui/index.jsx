@@ -1,12 +1,16 @@
 import './index.scss';
-import { store } from '../../../app/appStore.js';
-import { setTemplateId } from '../../../entities/template/model/template.slice.js';
+import { store } from '../../../../../app/appStore.js';
+import { setTemplateId } from '../../../model/template.slice.js';
+import { navigate } from 'jsdom/lib/jsdom/living/window/navigation.js';
+import { useNavigate } from 'react-router-dom';
 
-export default function TemplateSelection({ image, description, layoutNumber }) {
+export default function TemplateLayoutCard({ image, description, layoutNumber }) {
+  const navigate = useNavigate();
   const handleSelection = (layoutType) => {
     console.log(store.getState());
     store.dispatch(setTemplateId(layoutType));
     console.log(store.getState());
+    navigate('/color-spectrum');
     // console.log(initialState);
   };
 

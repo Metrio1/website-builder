@@ -5,6 +5,7 @@ import { RouterProvider } from 'react-router-dom';
 import routes from './AppRoutes.jsx';
 import { store } from './appStore.js';
 import { Provider } from 'react-redux';
+import 'normalize.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
