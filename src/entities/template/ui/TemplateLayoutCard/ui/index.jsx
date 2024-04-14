@@ -6,9 +6,9 @@ import { useNavigate } from 'react-router-dom';
 
 export default function TemplateLayoutCard({ image, description, layoutNumber }) {
   const navigate = useNavigate();
-  const handleSelection = (layoutType) => {
+  const handleSelection = () => {
     console.log(store.getState());
-    store.dispatch(setTemplateId(layoutType));
+    store.dispatch(setTemplateId(layoutNumber));
     console.log(store.getState());
     navigate('/color-spectrum');
     // console.log(initialState);
@@ -19,7 +19,7 @@ export default function TemplateLayoutCard({ image, description, layoutNumber })
       <img className="basic__layout" src={image} width="480" height="270" />
       <div className="basic__description">
         <h3>{description}</h3>
-        <button className="basic__button" onClick={() => handleSelection({ layoutNumber })}>
+        <button className="basic__button" onClick={handleSelection}>
           Выбрать
         </button>
       </div>

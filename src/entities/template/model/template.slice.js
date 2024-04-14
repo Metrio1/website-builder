@@ -12,7 +12,6 @@ const templateSlice = createSlice({
     },
     setColorsetId: (state, action) => {
       state.websiteColorset = action.payload;
-      console.log(action.payload);
     },
   },
 });
