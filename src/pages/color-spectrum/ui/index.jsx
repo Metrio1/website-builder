@@ -24,8 +24,18 @@ export default function ColorSpectrum() {
           <div className="color-spectrum__colorsets">
             <ColorsetCard
               image={'colorset1.svg'}
-              description={'Холодная гамма с фиолетовыми оттенками'}
+              description={'Гамма с фиолетовыми оттенками'}
               colorsetNumber={'colorset1'}
+            />
+            <ColorsetCard
+              image={'colorset2.svg'}
+              description={'Гамма с синими оттенками'}
+              colorsetNumber={'colorset2'}
+            />
+            <ColorsetCard
+              image={'colorset3.svg'}
+              description={'Гамма с зелёными оттенками'}
+              colorsetNumber={'colorset3'}
             />
           </div>
         </div>

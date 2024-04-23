@@ -25,17 +25,17 @@ export default function Basic() {
             <TemplateLayoutCard
               image={'first_layout.svg'}
               description={'Шаблон с левой боковой панелью'}
-              layoutNumber={'first_layout'}
+              layoutNumber={'1'}
             />
             <TemplateLayoutCard
               image={'second_layout.svg'}
               description={'Шаблон без боковой панели'}
-              layoutNumber={'second_layout'}
+              layoutNumber={'2'}
             />
             <TemplateLayoutCard
               image={'third_layout.svg'}
               description={'Шаблон с правой боковой панелью'}
-              layoutNumber={'third_layout'}
+              layoutNumber={'3'}
             />
           </div>
         </div>

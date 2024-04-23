@@ -36,6 +36,10 @@ const routes = createBrowserRouter([
     path: '/content-customization',
     element: <ContentCustomization />,
   },
+  {
+    path: '/srcdoc',
+    element: <ContentCustomization />,
+  },
 ]);
 
 export default routes;
