@@ -37,6 +37,11 @@ export default function Basic() {
               description={'Шаблон с правой боковой панелью'}
               layoutNumber={'3'}
             />
+            <TemplateLayoutCard
+              image={'fourth_layout.svg'}
+              description={'Шаблон с верхней панелью'}
+              layoutNumber={'4'}
+            />
           </div>
         </div>
       </main>

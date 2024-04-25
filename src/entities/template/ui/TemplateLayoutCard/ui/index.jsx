@@ -7,8 +7,7 @@ import { useLazyGetLayoutQuery } from '../../../../layout-pages/api/api.js';
 
 export default function TemplateLayoutCard({ image, description, layoutNumber }) {
   const [getLayout, getLayoutState] = useLazyGetLayoutQuery();
-
-
+  
   const navigate = useNavigate();
   const handleSelection = () => {
     getLayout(layoutNumber);

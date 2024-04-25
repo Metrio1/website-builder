@@ -9,8 +9,8 @@ export const api_2 = createApi({
     getLayout: builder.query({
       query: (templateId) => `layout/${templateId}`,
       onQueryStarted(arg, api) {
-        console.log(arg)
-      }
+        console.log(arg);
+      },
     }),
   }),
 });
