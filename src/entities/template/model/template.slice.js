@@ -5,6 +5,7 @@ const templateSlice = createSlice({
   initialState: {
     websiteTemplate: null,
     websiteColorset: null,
+    websiteTag: null,
   },
   reducers: {
     setTemplateId: (state, action) => {

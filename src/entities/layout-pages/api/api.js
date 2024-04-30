@@ -12,7 +12,13 @@ export const api_2 = createApi({
         console.log(arg);
       },
     }),
+    getTag: builder.query({
+      query: (tagId) => `tag/${tagId}`,
+      onQueryStarted(tag, api) {
+        console.log(tag);
+      },
+    }),
   }),
 });
 
-export const { useLazyGetLayoutQuery, useGetLayoutQuery } = api_2;
+export const { useLazyGetLayoutQuery, useGetLayoutQuery, useLazyGetTagQuery, useGetTagQuery } = api_2;
