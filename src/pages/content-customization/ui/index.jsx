@@ -5,29 +5,36 @@ import {
   useLazyGetLayoutQuery, useLazyGetTagQuery,
 } from '../../../entities/layout-pages/api/api.js';
 import { useSelector } from 'react-redux';
-import {get} from "jsdom/lib/jsdom/named-properties-tracker.js";
+import SidebarSettingTags from '../../../widgets/sidebar-setting-tags/ui/index.jsx';
+import SettingUpSidebar from "../../../widgets/setting-up-sidebar/ui/index.jsx";
+import SettingUpHeader from "../../../widgets/setting-up-header/ui/index.jsx";
+import SettingUpFooter from "../../../widgets/setting-up-footer/ui/index.jsx";
 
 export default function ContentCustomization() {
   const templateId = useSelector((state) => state.templateSlice.websiteTemplate);
 
-  const [getTag, getTagState] = useLazyGetTagQuery();
+  const [sidebarContent, setSidebarContent] = useState('SettingUpTags');
+
+  // console.log(sidebarContent);
 
   const { data } = useGetLayoutQuery(templateId, { skip: !templateId });
 
-  const headerPlace = '.sgcms-layout__header-container';
-  const sidebarPlace = '.sgcms-layout__main__sidebar-container';
-  const footerPlace = '.sgcms-layout__footer-container';
-  const handleClick = async (tag, place) => {
-    getTag(tag);
-    const { data: tagData } = await getTag(tag);
-    const iframe = document.querySelector('iframe');
-    const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-    const node = iframeDocument.querySelector('.sgcms-layout');
+  // const sidebarContentToRender = !sidebarContent ? <SidebarSettingTags setSidebarContent={setSidebarContent}/> : <SidebarSettingHeader setSidebarContent={setSidebarContent}/>;
 
-    const placement = node.querySelector(place);
+  const sidebarContentToRender = () => {
 
-    placement.innerHTML = tagData?.data;
+    switch (sidebarContent) {
+      case 'SettingUpHeader':
+        return <SettingUpHeader setSidebarContent={setSidebarContent} />;
+      case 'SettingUpSidebar':
+        return <SettingUpSidebar setSidebarContent={setSidebarContent} />;
+      case 'SettingUpFooter':
+        return <SettingUpFooter setSidebarContent={setSidebarContent} />;
+      default:
+        return <SidebarSettingTags setSidebarContent={setSidebarContent} />;
+    }
   };
+
 
   return (
     <div className="content-customization">
@@ -38,62 +45,7 @@ export default function ContentCustomization() {
       <main className="content-customization__main">
         <aside className="content-customization__main__sidebar-container">
           <div className="content-customization__main__sidebar-container__list-container">
-            <div className="content-customization__main__sidebar-container__list-container__wrapper">
-              <button
-                  className="content-customization__main__sidebar-container__list-container__wrapper_btn-tag"
-                  onClick={() => handleClick('h1', headerPlace)}
-              >
-                Хедер №1
-              </button>
-              <button
-                  className="content-customization__main__sidebar-container__list-container__wrapper_btn-settings"
-                  onClick={() => handleClick('h1', headerPlace)}
-              >
-                *
-              </button>
-              <button
-                  className="content-customization__main__sidebar-container__list-container__wrapper_btn-tag"
-                  onClick={() => handleClick('h1', headerPlace)}
-              >
-                Хедер №1
-              </button>
-              <button
-                  className="content-customization__main__sidebar-container__list-container__wrapper_btn-tag"
-                  onClick={() => handleClick('h2', headerPlace)}
-              >
-                Хедер №2
-              </button>
-              <button
-                  className="content-customization__main__sidebar-container__list-container__wrapper_btn-tag"
-                  onClick={() => handleClick('s1', sidebarPlace)}
-              >
-                Сайдбар №1
-              </button>
-              <button
-                  className="content-customization__main__sidebar-container__list-container__wrapper_btn-tag"
-                  onClick={() => handleClick('s2', sidebarPlace)}
-              >
-                Сайдбар №2
-              </button>
-              {/*<button*/}
-              {/*    className="content-customization__main__sidebar-container__list-container__wrapper_btn-tag"*/}
-              {/*    onClick={() => handleClick('s3', sidebarPlace)}*/}
-              {/*>*/}
-              {/*  Сайдбар №3*/}
-              {/*</button>*/}
-              <button
-                  className="content-customization__main__sidebar-container__list-container__wrapper_btn-tag"
-                  onClick={() => handleClick('f1', footerPlace)}
-              >
-                Футер №1
-              </button>
-              <button
-                  className="content-customization__main__sidebar-container__list-container__wrapper_btn-tag"
-                  onClick={() => handleClick('f2', footerPlace)}
-              >
-                Футер №2
-              </button>
-            </div>
+            {sidebarContentToRender()}
           </div>
         </aside>
         <div className="sgcms-layout__main__main-container">

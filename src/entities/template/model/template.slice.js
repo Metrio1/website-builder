@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const templateSlice = createSlice({
-  name: 'templateSliced',
+  name: 'templateSlice',
   initialState: {
     websiteTemplate: null,
     websiteColorset: null,

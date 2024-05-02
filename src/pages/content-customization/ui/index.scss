@@ -8,6 +8,8 @@
   --sgcms-sidebar-def-width: 380px;
 }
 
+
+
 html, body, #root{
   height: 100dvh;
   scrollbar-gutter: stable;
@@ -60,12 +62,21 @@ html, body, #root{
             box-sizing: border-box;
             height: 100%;
 
-            &_btn-tag {
-              width: 150px;
+            &__choose-block {
+
+              &__title {
+                color: white;
+              }
+
+              //&__btn-tag {
+              //  width: 200px;
+              //}
+              //&__btn-settings {
+              //  width: 100px;
+              //}
             }
-            &_btn-settings {
-              width: 30px;
-            }
+
+
           }
         }
       }
