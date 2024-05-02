@@ -2,19 +2,29 @@ import './index.scss';
 import React, { useState } from 'react';
 import { useLazyGetTagQuery } from '../../../entities/layout-pages/api/api.js';
 import SettingsButton from '../../../shared/settings-button/ui/index.jsx';
+import { store } from '../../../app/appStore.js';
+import {
+  setSelectedFooterId,
+  setSelectedHeaderId,
+  setSelectedSidebarId,
+} from '../../../entities/tag/model/tag.slice.js';
+import { useSelector } from 'react-redux';
 
 export default function SidebarSettingTags({ setSidebarContent }) {
+
+  const selectedHeader = useSelector((state) => state.tagSlice.selectedHeader);
+  const selectedSidebar = useSelector((state) => state.tagSlice.selectedSidebar);
+  const selectedFooter = useSelector((state) => state.tagSlice.selectedFooter);
+
   const headerPlace = '.sgcms-layout__header-container';
   const sidebarPlace = '.sgcms-layout__main__sidebar-container';
   const footerPlace = '.sgcms-layout__footer-container';
 
-  const [selectedHeader, setSelectedHeader] = useState('');
-  const [selectedSidebar, setSelectedSidebar] = useState('');
-  const [selectedFooter, setSelectedFooter] = useState('');
-
   const [getTag, getTagState] = useLazyGetTagQuery();
   console.log(getTag);
   const handleClick = async (tag, place) => {
+
+
     getTag(tag);
     const { data: tagData } = await getTag(tag);
     const iframe = document.querySelector('iframe');
@@ -27,15 +37,13 @@ export default function SidebarSettingTags({ setSidebarContent }) {
 
     switch (place) {
       case headerPlace:
-        return setSelectedHeader(tag);
+        return store.dispatch(setSelectedHeaderId(tag));
       case sidebarPlace:
-        return setSelectedSidebar(tag);
+        return store.dispatch(setSelectedSidebarId(tag));
       case footerPlace:
-        return setSelectedFooter(tag);
+        return store.dispatch(setSelectedFooterId(tag));
     }
   };
-
-
 
   return (
     <div className="content-customization__main__sidebar-container__list-container__wrapper">
@@ -50,7 +58,7 @@ export default function SidebarSettingTags({ setSidebarContent }) {
           >
             Хедер №1
           </button>
-          {selectedHeader === 'h1' && <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpHeader'} />}
+          {selectedHeader === 'h1' && <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpHeader'} /> }
         </div>
 
         <div>
@@ -60,7 +68,7 @@ export default function SidebarSettingTags({ setSidebarContent }) {
           >
             Хедер №2
           </button>
-          {selectedHeader === 'h2' && <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpHeader'} />}
+          {selectedHeader === 'h2' && <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpHeader'} /> }
         </div>
       </div>
       <div className="content-customization__main__sidebar-container__list-container__wrapper__header-choose">
@@ -74,7 +82,7 @@ export default function SidebarSettingTags({ setSidebarContent }) {
           >
             Сайдбар №1
           </button>
-          {selectedSidebar === 's1' && <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpSidebar'} />}
+          {selectedSidebar === 's1' && <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpSidebar'} /> }
         </div>
         <div>
           <button
@@ -83,7 +91,7 @@ export default function SidebarSettingTags({ setSidebarContent }) {
           >
             Сайдбар №2
           </button>
-          {selectedSidebar === 's2' && <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpSidebar'} />}
+          {selectedSidebar === 's2' && <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpSidebar'} /> }
         </div>
 
         <div>
@@ -93,7 +101,7 @@ export default function SidebarSettingTags({ setSidebarContent }) {
           >
             Сайдбар №3
           </button>
-          {selectedSidebar === 's3' && <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpSidebar'} />}
+          {selectedSidebar === 's3' && <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpSidebar'} /> }
         </div>
       </div>
       <div className="content-customization__main__sidebar-container__list-container__wrapper__header-choose">
@@ -107,7 +115,7 @@ export default function SidebarSettingTags({ setSidebarContent }) {
           >
             Футер №1
           </button>
-          {selectedFooter === 'f1' && <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpFooter'} />}
+          {selectedFooter === 'f1' && <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpFooter'} /> }
         </div>
         <div>
           <button
@@ -116,7 +124,7 @@ export default function SidebarSettingTags({ setSidebarContent }) {
           >
             Футер №2
           </button>
-          {selectedFooter === 'f2' && <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpFooter'} />}
+          {selectedFooter === 'f2' && <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpFooter'} /> }
         </div>
       </div>
     </div>

@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import './index.scss';
 import {
-  useGetLayoutQuery, useGetTagQuery,
-  useLazyGetLayoutQuery, useLazyGetTagQuery,
+  useGetLayoutQuery,
+  useGetTagQuery,
+  useLazyGetLayoutQuery,
+  useLazyGetTagQuery,
 } from '../../../entities/layout-pages/api/api.js';
 import { useSelector } from 'react-redux';
 import SidebarSettingTags from '../../../widgets/sidebar-setting-tags/ui/index.jsx';
-import SettingUpSidebar from "../../../widgets/setting-up-sidebar/ui/index.jsx";
-import SettingUpHeader from "../../../widgets/setting-up-header/ui/index.jsx";
-import SettingUpFooter from "../../../widgets/setting-up-footer/ui/index.jsx";
+import SettingUpSidebar from '../../../widgets/setting-up-sidebar/ui/index.jsx';
+import SettingUpHeader from '../../../widgets/setting-up-header/ui/index.jsx';
+import SettingUpFooter from '../../../widgets/setting-up-footer/ui/index.jsx';
 
 export default function ContentCustomization() {
   const templateId = useSelector((state) => state.templateSlice.websiteTemplate);
@@ -22,7 +24,6 @@ export default function ContentCustomization() {
   // const sidebarContentToRender = !sidebarContent ? <SidebarSettingTags setSidebarContent={setSidebarContent}/> : <SidebarSettingHeader setSidebarContent={setSidebarContent}/>;
 
   const sidebarContentToRender = () => {
-
     switch (sidebarContent) {
       case 'SettingUpHeader':
         return <SettingUpHeader setSidebarContent={setSidebarContent} />;
@@ -34,7 +35,6 @@ export default function ContentCustomization() {
         return <SidebarSettingTags setSidebarContent={setSidebarContent} />;
     }
   };
-
 
   return (
     <div className="content-customization">
@@ -50,10 +50,10 @@ export default function ContentCustomization() {
         </aside>
         <div className="sgcms-layout__main__main-container">
           <iframe
-              className="content-customization__main__iframe"
-              title="HTML Content"
-              srcDoc={data?.data}
-              style={{ width: '80vw', height: '100vh' }}
+            className="content-customization__main__iframe"
+            title="HTML Content"
+            srcDoc={data?.data}
+            style={{ width: '80vw', height: '100vh' }}
           ></iframe>
         </div>
       </main>

@@ -1,18 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const tagSlice = createSlice({
-    name: 'tagSlice',
-    initialState: {
-        websiteTemplate: null,
-        websiteColorset: null,
-        websiteTag: null,
+  name: 'tagSlice',
+  initialState: {
+    selectedHeader: null,
+    selectedSidebar: null,
+    selectedFooter: null,
+  },
+  reducers: {
+    setSelectedHeaderId: (state, action) => {
+      state.selectedHeader = action.payload;
     },
-    reducers: {
-        setTemplateId: (state, action) => {
-            state.websiteTemplate = action.payload;
-        },
-        setColorsetId: (state, action) => {
-            state.websiteColorset = action.payload;
-        },
+    setSelectedSidebarId: (state, action) => {
+      state.selectedSidebar = action.payload;
     },
+    setSelectedFooterId: (state, action) => {
+      state.selectedFooter = action.payload;
+    },
+  },
 });
+
+export const { setSelectedHeaderId, setSelectedSidebarId, setSelectedFooterId } = tagSlice.actions;
+export default tagSlice.reducer;
