@@ -1,6 +1,6 @@
 import './index.scss';
 import { useState } from 'react';
-import ImageLoader from "../../ImageLoader/ui/index.jsx";
+import SetLogoImage from '../../set-logo-image/ui/index.jsx';
 
 export default function DropDownList() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,7 +21,7 @@ export default function DropDownList() {
             <p>Текст</p>
             <input type="text" />
           </div>
-          <ImageLoader />
+            <SetLogoImage />
         </ul>
       )}
     </div>

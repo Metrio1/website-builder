@@ -13,7 +13,6 @@ export default function SettingUpHeader({ setSidebarContent }) {
       <button onClick={() => handleClick()}>Вернуться</button>
       <DropDownList />
       <DropDownListChoice />
-
     </div>
   );
 }

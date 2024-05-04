@@ -1,12 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const initialState = {
+  selectedHeader: null,
+  selectedSidebar: null,
+  selectedFooter: null,
+}
+
 const tagSlice = createSlice({
   name: 'tagSlice',
-  initialState: {
-    selectedHeader: null,
-    selectedSidebar: null,
-    selectedFooter: null,
-  },
+  initialState,
   reducers: {
     setSelectedHeaderId: (state, action) => {
       state.selectedHeader = action.payload;
@@ -17,8 +19,12 @@ const tagSlice = createSlice({
     setSelectedFooterId: (state, action) => {
       state.selectedFooter = action.payload;
     },
+    resetSelectedTags: () => {
+      return initialState;
+    }
   },
 });
 
-export const { setSelectedHeaderId, setSelectedSidebarId, setSelectedFooterId } = tagSlice.actions;
+export const { setSelectedHeaderId, setSelectedSidebarId,
+  setSelectedFooterId, resetSelectedTags } = tagSlice.actions;
 export default tagSlice.reducer;
