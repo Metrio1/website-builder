@@ -1,6 +1,8 @@
 import './index.scss';
-import DropDownList from '../../../entities/drop-down-list/ui/index.jsx';
+import DropDownList from '../../../entities/drop-down-list-logo/ui/index.jsx';
 import DropDownListChoice from '../../../entities/drop-down-list-choice/ui/index.jsx';
+import DropDownListLogo from '../../../entities/drop-down-list-logo/ui/index.jsx';
+import DropDownListMenu from '../../../entities/drop-down-list-menu/ui/index.jsx';
 
 export default function SettingUpHeader({ setSidebarContent }) {
   const handleClick = () => {
@@ -11,8 +13,9 @@ export default function SettingUpHeader({ setSidebarContent }) {
     <div className="setting-up-header">
       <h2>Настройка хедера</h2>
       <button onClick={() => handleClick()}>Вернуться</button>
-      <DropDownList />
-      <DropDownListChoice />
+      <DropDownListLogo />
+      {/*<DropDownListChoice />*/}
+      <DropDownListMenu />
     </div>
   );
 }

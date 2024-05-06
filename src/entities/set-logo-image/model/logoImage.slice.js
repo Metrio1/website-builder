@@ -1,17 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const initialState = {
+  logoImage: null,
+}
+
 const logoImageSlice = createSlice({
   name: 'logoImageSlice',
-  initialState: {
-    logoImage: null,
-  },
+  initialState,
   reducers: {
     setLogoImage: (state, action) => {
       state.logoImage = action.payload;
     },
+    clearLogoImage: () => {
+      return initialState;
+    }
   },
 });
 
-export const { setLogoImage} = logoImageSlice.actions;
+export const { setLogoImage, clearLogoImage} = logoImageSlice.actions;
 
 export default logoImageSlice.reducer;

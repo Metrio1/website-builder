@@ -1,8 +1,19 @@
 import './index.scss';
 import ColorsetCard from '../../../entities/template/ui/ColorsetCatd/ui/index.jsx';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { resetSelectedTags } from '../../../entities/tag/model/tag.slice.js';
+import {clearLogoImage} from "../../../entities/set-logo-image/model/logoImage.slice.js";
 
 export default function ColorSpectrum() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(resetSelectedTags());
+    dispatch(clearLogoImage());
+  }, [dispatch]);
+
   const navigate = useNavigate();
 
   const handleSelection = (layoutType) => {

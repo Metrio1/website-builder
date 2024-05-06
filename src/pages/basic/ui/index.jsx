@@ -1,16 +1,9 @@
 import './index.scss';
 import TemplateLayoutCard from '../../../entities/template/ui/TemplateLayoutCard/ui/index.jsx';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { resetSelectedTags } from '../../../entities/tag/model/tag.slice.js';
 
 export default function Basic() {
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(resetSelectedTags());
-  }, [dispatch]);
 
   const navigate = useNavigate();
 
