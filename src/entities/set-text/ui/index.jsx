@@ -1,7 +1,7 @@
 import './index.scss';
 import { useState } from 'react';
 
-export default function SetLogoText() {
+export default function SetText({ maxLength, place }) {
   const [inputText, setInputText] = useState('');
   const handleInputChange = (event) => {
     const newText = event.target.value;
@@ -11,11 +11,16 @@ export default function SetLogoText() {
     const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
     const node = iframeDocument.querySelector('.sgcms-layout');
 
-    const placementTag = node.querySelector('.logo-text');
+    const placementTag = node.querySelector(`.${place}`);
 
     placementTag.style.fontSize = '30px';
     placementTag.innerHTML = newText;
   };
 
-  return <input type="text" value={inputText} onChange={handleInputChange} maxLength={20} />;
+  return (
+    <div>
+      <h3>Введите текст</h3>
+      <textarea value={inputText} onChange={handleInputChange} maxLength={maxLength} />
+    </div>
+  );
 }

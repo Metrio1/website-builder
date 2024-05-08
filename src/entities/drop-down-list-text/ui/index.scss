@@ -1,6 +1,9 @@
-.setting-up-header {
+.dropdown {
   width: 100%;
-  height: 100%;
   position: sticky;
   overflow: auto;
+}
+
+textarea {
+  max-width: 330px;
 }

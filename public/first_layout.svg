@@ -2,7 +2,7 @@
 <g clip-path="url(#clip0_35_2)">
 <rect width="1920" height="1080" fill="white"/>
 <rect width="1920" height="100" fill="#6D6D6D"/>
-<rect y="100" width="250" height="980" fill="#848484"/>
+<rect y="100" width="250" height="980" fill="#3F3F3F"/>
 <rect x="250" y="100" width="1671" height="980" fill="#9A9A9A"/>
 <circle cx="66" cy="50" r="30" fill="#7D7D7D"/>
 <circle cx="1861" cy="55" r="30" fill="#7D7D7D"/>
@@ -10,15 +10,15 @@
 <rect x="1683" y="25" width="50" height="50" rx="10" fill="#7D7D7D"/>
 <rect x="1618" y="25" width="50" height="50" rx="10" fill="#7D7D7D"/>
 <rect x="1553" y="26" width="50" height="50" rx="10" fill="#7D7D7D"/>
-<rect x="16" y="162" width="217" height="40" rx="10" fill="#939393"/>
-<rect x="16" y="217" width="217" height="40" rx="10" fill="#939393"/>
-<rect x="16" y="272" width="217" height="40" rx="10" fill="#939393"/>
-<rect x="16" y="327" width="217" height="40" rx="10" fill="#939393"/>
-<rect x="16" y="382" width="217" height="40" rx="10" fill="#939393"/>
-<rect x="16" y="437" width="217" height="40" rx="10" fill="#939393"/>
-<rect x="16" y="492" width="217" height="40" rx="10" fill="#939393"/>
-<rect x="16" y="547" width="217" height="40" rx="10" fill="#939393"/>
-<rect x="16" y="602" width="217" height="40" rx="10" fill="#939393"/>
+<rect x="16" y="162" width="217" height="40" rx="10" fill="#5F5F5F"/>
+<rect x="16" y="217" width="217" height="40" rx="10" fill="#5F5F5F"/>
+<rect x="16" y="272" width="217" height="40" rx="10" fill="#5F5F5F"/>
+<rect x="16" y="327" width="217" height="40" rx="10" fill="#5F5F5F"/>
+<rect x="16" y="382" width="217" height="40" rx="10" fill="#5F5F5F"/>
+<rect x="16" y="437" width="217" height="40" rx="10" fill="#5F5F5F"/>
+<rect x="16" y="492" width="217" height="40" rx="10" fill="#5F5F5F"/>
+<rect x="16" y="547" width="217" height="40" rx="10" fill="#5F5F5F"/>
+<rect x="16" y="602" width="217" height="40" rx="10" fill="#5F5F5F"/>
 <rect y="980" width="1920" height="100" fill="#B6B6B6"/>
 <rect x="302" y="138" width="1567" height="234" rx="10" fill="#A2A2A2"/>
 <rect x="471" y="422" width="274" height="235" rx="10" fill="#A2A2A2"/>

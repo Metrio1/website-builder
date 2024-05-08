@@ -1,7 +1,7 @@
 import './index.scss';
 import { useState } from 'react';
 
-export default function LinkCreation({ numberOfLink }) {
+export default function LinkCreation({ numberOfLink, typesOfLinks }) {
   const [linkText, setLinkText] = useState('');
   const [linkUrl, setLinkUrl] = useState('');
 
@@ -22,7 +22,7 @@ export default function LinkCreation({ numberOfLink }) {
     const iframe = document.querySelector('iframe');
     const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
     const node = iframeDocument.querySelector('.sgcms-layout');
-    const placementTag = node.querySelector(`.link-${numberOfLink}`);
+    const placementTag = node.querySelector(`.${typesOfLinks}-${numberOfLink}`);
 
     // Очистить содержимое элемента, прежде чем добавить ссылку
     placementTag.innerHTML = '';

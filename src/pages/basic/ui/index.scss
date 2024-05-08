@@ -28,13 +28,9 @@ h3 {
 
   &__templates {
     text-align: center;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
-    gap: 30px;
-    justify-items: center;
-
-    margin-left: 15%;
-    margin-right: 15%;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 2%;
   }
 
   &__template {

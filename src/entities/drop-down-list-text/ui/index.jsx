@@ -1,9 +1,8 @@
 import './index.scss';
 import { useState } from 'react';
-import SetLogoImage from '../../set-logo-image/ui/index.jsx';
 import SetText from '../../set-text/ui/index.jsx';
 
-export default function DropDownListLogo() {
+export default function DropDownListText() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -14,15 +13,12 @@ export default function DropDownListLogo() {
     <div className="dropdown">
       <h1></h1>
       <button className="dropdown-button" onClick={toggleDropdown}>
-        Логотип
+        Текст
       </button>
       {isOpen && (
-        <ul className="dropdown-list">
-          <div>
-            <SetText maxLength={20} place={'logo-text'} />
-          </div>
-            <SetLogoImage />
-        </ul>
+        <div className="dropdown-list">
+          <SetText maxLength={150} place={'footer-top1'} />
+        </div>
       )}
     </div>
   );

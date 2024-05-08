@@ -3,7 +3,7 @@ import { useState } from 'react';
 import д from '../../link-creation/ui/index.jsx';
 import LinkCreation from '../../link-creation/ui/index.jsx';
 
-export default function DropDownListMenu() {
+export default function DropDownListMenu({ typesOfLinks, maximumNumberOfLinks }) {
   const [isOpen, setIsOpen] = useState(false);
   const [numberOfLink, setNumberOfLink] = useState(1);
 
@@ -12,7 +12,7 @@ export default function DropDownListMenu() {
   };
 
   const handleCreateLink = () => {
-    if (numberOfLink < 5) {
+    if (numberOfLink < maximumNumberOfLinks) {
       setNumberOfLink(numberOfLink + 1);
     }
   };
@@ -27,10 +27,10 @@ export default function DropDownListMenu() {
         <ul className="dropdown-list">
           {[...Array(numberOfLink)].map((_, index) => (
             <li key={index}>
-              <LinkCreation numberOfLink={index + 1} />
+              <LinkCreation numberOfLink={index + 1} typesOfLinks={typesOfLinks} />
             </li>
           ))}
-          {numberOfLink < 5 && (
+          {numberOfLink < maximumNumberOfLinks && (
             <li>
               <button onClick={handleCreateLink}>Добавить ссылку</button>
             </li>

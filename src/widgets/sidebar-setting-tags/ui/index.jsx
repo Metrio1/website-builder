@@ -16,7 +16,7 @@ export default function SidebarSettingTags({ setSidebarContent }) {
   const selectedFooter = useSelector((state) => state.tagSlice.selectedFooter);
 
   const headerPlace = '.sgcms-layout__header-container';
-  const sidebarPlace = '.sgcms-layout__main__sidebar-container';
+  const sidebarPlace = '.sgcms-layout__main__sidebar-container__list-container__wrapper';
   const footerPlace = '.sgcms-layout__footer-container';
 
   const [getTag, getTagState] = useLazyGetTagQuery();
@@ -99,17 +99,17 @@ export default function SidebarSettingTags({ setSidebarContent }) {
           )}
         </div>
 
-        <div>
-          <button
-            className="content-customization__main__sidebar-container__list-container__wrapper__choose-block__btn-tag"
-            onClick={() => handleClick('s3', sidebarPlace)}
-          >
-            Сайдбар №3
-          </button>
-          {selectedSidebar === 's3' && (
-            <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpSidebar'} />
-          )}
-        </div>
+        {/*<div>*/}
+        {/*  <button*/}
+        {/*    className="content-customization__main__sidebar-container__list-container__wrapper__choose-block__btn-tag"*/}
+        {/*    onClick={() => handleClick('s3', sidebarPlace)}*/}
+        {/*  >*/}
+        {/*    Сайдбар №3*/}
+        {/*  </button>*/}
+        {/*  {selectedSidebar === 's3' && (*/}
+        {/*    <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpSidebar'} />*/}
+        {/*  )}*/}
+        {/*</div>*/}
       </div>
       <div className="content-customization__main__sidebar-container__list-container__wrapper__header-choose">
         <h3 className="content-customization__main__sidebar-container__list-container__wrapper__choose-block__title">
