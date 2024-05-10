@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function LinkCreation({ numberOfLink }) {
+export default function DropDownListPhone({ place }) {
   const [linkText, setLinkText] = useState('');
   const [linkUrl, setLinkUrl] = useState('');
   const [isOpen, setIsOpen] = useState(false);
@@ -27,12 +27,12 @@ export default function LinkCreation({ numberOfLink }) {
     const link = document.createElement('a');
     link.href = linkUrl || '#'; // Если URL не указан, использовать '#'
     link.textContent = formattedPhoneNumber;
-    link.style.fontSize = '20px';
+    link.style.fontSize = '24px';
 
     const iframe = document.querySelector('iframe');
     const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
     const node = iframeDocument.querySelector('.sgcms-layout');
-    const placementTag = node.querySelector(`.phone`);
+    const placementTag = node.querySelector(`.${place}`);
 
     // Очистить содержимое элемента, прежде чем добавить ссылку
     placementTag.innerHTML = '';
@@ -41,7 +41,6 @@ export default function LinkCreation({ numberOfLink }) {
 
   return (
     <div className="dropdown">
-      <h1></h1>
       <button className="dropdown-button" onClick={toggleDropdown}>
         Телефон
       </button>

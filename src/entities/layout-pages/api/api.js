@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-export const api_2 = createApi({
+export const api_layout = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
     baseUrl: 'http://127.0.0.1:5000/api/',
@@ -18,7 +18,14 @@ export const api_2 = createApi({
         console.log(tag);
       },
     }),
+    getMain: builder.query({
+      query: (mainId) => `main/${mainId}`,
+      onQueryStarted(main, api) {
+        console.log(main);
+      },
+    }),
   }),
 });
 
-export const { useLazyGetLayoutQuery, useGetLayoutQuery, useLazyGetTagQuery, useGetTagQuery } = api_2;
+export const { useLazyGetLayoutQuery, useGetLayoutQuery, useLazyGetTagQuery,
+  useGetTagQuery, useLazyGetMainQuery, useGetMainQuery } = api_layout;

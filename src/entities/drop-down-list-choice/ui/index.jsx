@@ -16,7 +16,6 @@ export default function DropDownListChoice() {
 
   return (
     <div className="dropdown">
-      <h1></h1>
       <button className="dropdown-button" onClick={toggleDropdown}>{selectedOption || 'Выберите вариант'}</button>
       {isOpen && (
         <ul className="dropdown-list">

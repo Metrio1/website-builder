@@ -19,7 +19,6 @@ export default function DropDownListMenu({ typesOfLinks, maximumNumberOfLinks })
 
   return (
     <div className="dropdown">
-      <h1></h1>
       <button className="dropdown-button" onClick={toggleDropdown}>
         Меню
       </button>

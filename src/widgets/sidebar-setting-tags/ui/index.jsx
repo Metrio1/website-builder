@@ -18,19 +18,26 @@ export default function SidebarSettingTags({ setSidebarContent }) {
   const headerPlace = '.sgcms-layout__header-container';
   const sidebarPlace = '.sgcms-layout__main__sidebar-container__list-container__wrapper';
   const footerPlace = '.sgcms-layout__footer-container';
+  const mainPlace = '.sgcms-layout__main__main-container';
 
   const [getTag, getTagState] = useLazyGetTagQuery();
   console.log(getTag);
   const handleClick = async (tag, place) => {
     getTag(tag);
     const { data: tagData } = await getTag(tag);
+    console.log(tagData);
     const iframe = document.querySelector('iframe');
     const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
     const node = iframeDocument.querySelector('.sgcms-layout');
 
     const placementTag = node.querySelector(place);
 
-    placementTag.innerHTML = tagData?.data;
+    if (tag === 'm1') {
+      placementTag.insertAdjacentHTML('beforeend', tagData?.data);
+    } else {
+      placementTag.innerHTML = tagData?.data;
+    }
+
 
     switch (place) {
       case headerPlace:
@@ -137,6 +144,16 @@ export default function SidebarSettingTags({ setSidebarContent }) {
             <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpFooter'} />
           )}
         </div>
+      </div>
+      <div className="content-customization__main__sidebar-container__list-container__wrapper__setting-main-content">
+        <h3 className="content-customization__main__sidebar-container__list-container__wrapper__choose-block__title">
+          Основной контент
+        </h3>
+        <button
+          className="content-customization__main__sidebar-container__list-container__wrapper__choose-block__btn-tag"
+          onClick={() => handleClick('m1', mainPlace)}
+        >Создать</button>
+        <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpMain'} />
       </div>
     </div>
   );
