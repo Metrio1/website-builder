@@ -24,8 +24,20 @@ export const api_layout = createApi({
         console.log(main);
       },
     }),
+    getJavaScript: builder.query({
+      query: (javaScriptId) => `main/js/${javaScriptId}`,
+      onQueryStarted(js, api) {
+        console.log(js);
+      },
+    }),
+    getCSS: builder.query({
+      query: (cssId) => `main/css/${cssId}`,
+      onQueryStarted(css, api) {
+        console.log(css);
+      },
+    }),
   }),
 });
 
 export const { useLazyGetLayoutQuery, useGetLayoutQuery, useLazyGetTagQuery,
-  useGetTagQuery, useLazyGetMainQuery, useGetMainQuery } = api_layout;
+  useGetTagQuery, useLazyGetMainQuery, useGetMainQuery, useLazyGetJavaScriptQuery, useLazyGetCssQuery } = api_layout;
