@@ -12,6 +12,7 @@ import SettingUpSidebar from '../../../widgets/setting-up-sidebar/ui/index.jsx';
 import SettingUpHeader from '../../../widgets/setting-up-header/ui/index.jsx';
 import SettingUpFooter from '../../../widgets/setting-up-footer/ui/index.jsx';
 import SettingUpMain from "../../../widgets/setting-up-main/ui/index.jsx";
+import SettingUpSlider from "../../../widgets/setting-up-slider/ui/index.jsx";
 
 export default function ContentCustomization() {
   const templateId = useSelector((state) => state.templateSlice.websiteTemplate);
@@ -34,6 +35,8 @@ export default function ContentCustomization() {
         return <SettingUpFooter setSidebarContent={setSidebarContent} />;
       case 'SettingUpMain':
         return <SettingUpMain setSidebarContent={setSidebarContent} />;
+      case 'SettingUpSlider':
+        return <SettingUpSlider setSidebarContent={setSidebarContent} />;
       default:
         return <SidebarSettingTags setSidebarContent={setSidebarContent} />;
     }

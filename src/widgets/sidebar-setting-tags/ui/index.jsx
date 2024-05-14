@@ -18,7 +18,6 @@ export default function SidebarSettingTags({ setSidebarContent }) {
   const headerPlace = '.sgcms-layout__header-container';
   const sidebarPlace = '.sgcms-layout__main__sidebar-container__list-container__wrapper';
   const footerPlace = '.sgcms-layout__footer-container';
-  const mainPlace = '.sgcms-layout__main__main-container';
 
   const [getTag, getTagState] = useLazyGetTagQuery();
   console.log(getTag);
@@ -149,10 +148,7 @@ export default function SidebarSettingTags({ setSidebarContent }) {
         <h3 className="content-customization__main__sidebar-container__list-container__wrapper__choose-block__title">
           Основной контент
         </h3>
-        <button
-          className="content-customization__main__sidebar-container__list-container__wrapper__choose-block__btn-tag"
-          onClick={() => handleClick('m1', mainPlace)}
-        >Создать</button>
+
         <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpMain'} />
       </div>
     </div>

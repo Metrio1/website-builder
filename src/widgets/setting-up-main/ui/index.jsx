@@ -4,61 +4,52 @@ import {
   useLazyGetCssQuery,
   useLazyGetJavaScriptQuery,
   useLazyGetMainQuery,
+  useLazyGetTagQuery,
 } from '../../../entities/layout-pages/api/api.js';
+import React, { useState } from 'react';
+import LinkCreation from '../../../entities/link-creation/ui/index.jsx';
+import DropDownListChoice from '../../../entities/drop-down-list-choice/ui/index.jsx';
+import SliderCreation from '../../../entities/slider-creation/ui/index.jsx';
 
 export default function SettingUpMain({ setSidebarContent }) {
-  const [getMain, getMainState] = useLazyGetMainQuery();
-  const [getJavaScript, getJavaScriptState] = useLazyGetJavaScriptQuery();
-  const [getCss, getCssState] = useLazyGetCssQuery();
-  const handleClick = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState('');
+  const [numberOfBlocks, setNumberOfBlocks] = useState(1);
+
+  const handleBack = () => {
     setSidebarContent(null);
   };
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
 
-  const handleGetMain = async (main, js1, js2) => {
-    const { data: tagMain } = await getMain(main);
-    const { data: jsMain1 } = await getJavaScript(js1);
-    const { data: jsMain2 } = await getJavaScript(js2);
-    console.log(tagMain);
-    console.log(jsMain1);
-    console.log(jsMain2);
-    const iframe = document.querySelector('iframe');
-    const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-    const node = iframeDocument.querySelector('.sgcms-layout');
+  const selectOption = (option) => {
+    setSelectedOption(option);
+    setIsOpen(false);
+  };
 
-    const placementTag = node.querySelector('.main__container');
-
-    placementTag.innerHTML = tagMain?.data;
-
-    // Создаем тег script для первого JavaScript файла
-    const scriptTag1 = document.createElement('script');
-    scriptTag1.type = 'text/javascript';
-    scriptTag1.textContent = jsMain1?.data;
-    placementTag.appendChild(scriptTag1);
-
-    // Создаем тег script для второго JavaScript файла
-    const scriptTag2 = document.createElement('script');
-    scriptTag2.type = 'text/javascript';
-    scriptTag2.textContent = jsMain2?.data;
-    placementTag.appendChild(scriptTag2);
-
-    const images = ['1.jpg', '2.jpg', '3.jpg', '4.jpg']; // Здесь должен быть массив изображений, полученный с сервера
-    images.forEach((image, index) => {
-      const img = document.createElement('img');
-      img.src = `http://127.0.0.1:5000/static/${image}`; // Путь к изображению
-      const placementImg = node.querySelector(`.image-box__${index + 1}`);
-      placementImg.appendChild(img);
-    });
+  const handleCreateBlock = () => {
+    if (numberOfBlocks < 5) {
+      setNumberOfBlocks(numberOfBlocks + 1);
+    }
   };
 
   return (
-    <div className="setting-up-main">
-      <h2>Настройка основного контента</h2>
-      <button onClick={() => handleClick()}>Вернуться</button>
-      <MainBlockCreation />
-      <button onClick={() => handleGetMain('gallery')}>Get gallery</button>
-      <button onClick={() => handleGetMain('slider', 'swiper-bundle.min.js', 'script.js')}>
-        Get slider
-      </button>
+    <div className="dropdown">
+      <button onClick={() => handleBack()}>Вернуться</button>
+      <ul className="dropdown-list">
+        {[...Array(numberOfBlocks)].map((_, index) => (
+          <li key={index}>
+            <DropDownListChoice index={index} setSidebarContent={setSidebarContent} />
+          </li>
+        ))}
+        {numberOfBlocks < 5 && (
+          <li>
+            <button onClick={handleCreateBlock}>Добавить блок с контентом</button>
+          </li>
+        )}
+      </ul>
     </div>
   );
+
 }

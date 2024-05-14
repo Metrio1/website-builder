@@ -30,7 +30,7 @@ export const api_layout = createApi({
         console.log(js);
       },
     }),
-    getCSS: builder.query({
+    getCss: builder.query({
       query: (cssId) => `main/css/${cssId}`,
       onQueryStarted(css, api) {
         console.log(css);
