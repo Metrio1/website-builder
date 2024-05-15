@@ -45,15 +45,7 @@ export const handleGetMain = async (
     const styleTag3 = document.createElement('style');
     styleTag3.textContent = cssMain3?.data;
     iframeDocument.head.appendChild(styleTag3);
-    const images = ['1.jpg', '2.jpg', '3.jpg', '4.jpg'];
-    images.forEach((image, imgNumber) => {
-      const img = document.createElement('img');
-      img.src = `http://127.0.0.1:5000/static/${image}`; // Путь к изображению
-      const placementImg = node.querySelector(`.image-box__${imgNumber + 1}`);
-      placementImg.appendChild(img);
 
-      placementImg.classList.remove(`image-box__${imgNumber + 1}`);
-      placementImg.classList.add(`image-boxed__${imgNumber + 1}`);
-    });
+
   }
 };
