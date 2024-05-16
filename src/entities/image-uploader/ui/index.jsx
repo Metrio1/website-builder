@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 
-export default function ImageUplaoder({ numberOfSlide }) {
+export default function ImageUploader({ numberOfSlide, onImageSelect }) {
   const [selectedFile, setSelectedFile] = useState('');
-  let numberOfImage = 1;
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -10,39 +9,52 @@ export default function ImageUplaoder({ numberOfSlide }) {
 
   const handleUpload = () => {
     if (selectedFile) {
-      // Генерация нового имени файла
-      const fileName = `${numberOfSlide}.jpg`; // Замените на ваш способ генерации имени файла
+      const fileName = `${numberOfSlide}.jpg`;
 
-        console.log(numberOfSlide);
-
-      // Создание объекта FormData и добавление файла с новым именем
       const formData = new FormData();
       formData.append('image', selectedFile, fileName);
 
-      // Отправка запроса на сервер
       fetch('http://127.0.0.1:5000/upload', {
         method: 'POST',
         body: formData,
       })
-          .then((response) => {
-            if (!response.ok) {
-              throw new Error('Network response was not ok');
-            }
-            return response.text();
-          })
-          .then((data) => {
-            console.log('File uploaded:', data);
-          })
-          .catch((error) => {
-            console.error('Error uploading file:', error);
-          });
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.text();
+        })
+        .then((data) => {
+          const imageUrl = `http://127.0.0.1:5000/static/${fileName}`;
+          console.log('File uploaded:', data);
+          onImageSelect(numberOfSlide, imageUrl);
+
+          const iframe = document.querySelector('iframe');
+          const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+          const swiperContainer = iframeDocument.querySelector('.swiper-wrapper');
+
+          const slide = swiperContainer.children[numberOfSlide - 1];
+          const imageBox = slide.querySelector('.image-box');
+
+          const img = document.createElement('img');
+          img.src = imageUrl;
+          const placementImg = document.createElement('div');
+          placementImg.classList.add(`image-box__${numberOfSlide}_${numberOfSlide + 1}`);
+          placementImg.appendChild(img);
+          imageBox.appendChild(placementImg);
+
+          iframe.srcdoc = iframeDocument.documentElement.innerHTML;
+        })
+        .catch((error) => {
+          console.error('Error uploading file:', error);
+        });
     }
   };
 
   return (
     <div>
       <input type="file" onChange={handleFileChange} />
-      <button onClick={handleUpload}>Upload</button>
+      <button onClick={handleUpload}>Загрузить изображение</button>
     </div>
   );
-};
+}
