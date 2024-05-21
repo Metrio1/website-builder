@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function ImageUploader({ numberOfSlide, onImageSelect, place }) {
+export default function ImageUploaderGallery({ numberOfSlide, onImageSelect }) {
   const [selectedFile, setSelectedFile] = useState('');
 
   const handleFileChange = (event) => {
@@ -9,7 +9,7 @@ export default function ImageUploader({ numberOfSlide, onImageSelect, place }) {
 
   const handleUpload = () => {
     if (selectedFile) {
-      const fileName = `${numberOfSlide}.jpg`;
+      const fileName = `gallery_${numberOfSlide}.jpg`;
 
       const formData = new FormData();
       formData.append('image', selectedFile, fileName);
@@ -31,17 +31,17 @@ export default function ImageUploader({ numberOfSlide, onImageSelect, place }) {
 
           const iframe = document.querySelector('iframe');
           const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-          const swiperContainer = iframeDocument.querySelector(`.${place}`);
+          const imageBox = iframeDocument.querySelector('.image-grid');
 
-          const slide = swiperContainer.children[numberOfSlide - 1];
-          const imageBox = slide.querySelector('.image-box');
+          const existingImage = imageBox.querySelector(`.image-box__${numberOfSlide}`);
+          if (existingImage) {
+            existingImage.remove();
+          }
 
           const img = document.createElement('img');
           img.src = imageUrl;
-          const placementImg = document.createElement('div');
-          placementImg.classList.add(`image-box__${numberOfSlide}_${numberOfSlide + 1}`);
-          placementImg.appendChild(img);
-          imageBox.appendChild(placementImg);
+          img.classList.add(`image-box__${numberOfSlide}`);
+          imageBox.appendChild(img);
 
           iframe.srcdoc = iframeDocument.documentElement.innerHTML;
         })

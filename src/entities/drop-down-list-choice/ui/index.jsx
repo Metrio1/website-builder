@@ -35,27 +35,43 @@ export default function DropDownListChoice({ index, setSidebarContent }) {
     placementBlock.innerHTML = blockData?.data;
   };
 
-
   const selectOption = async (option) => {
     setSelectedOption(option);
     setIsOpen(false);
     if (option === 'Слайдер') {
       await createBlock();
       await handleGetMain(
-          index,
-          getMain,
-          getJavaScript,
-          getCss,
-          'slider',
-          'swiper-bundle.min.js',
-          'script.js',
-          'slider-style.css',
-          'style.css',
-          'swiper-bundle.min.css',
+        index,
+        getMain,
+        getJavaScript,
+        getCss,
+        'slider',
+        'swiper-bundle.min.js',
+        'script.js',
+        'slider-style.css',
+        'style.css',
+        'swiper-bundle.min.css',
       );
     } else if (option === 'Галлерея') {
       await createBlock();
       await handleGetMain(index, getMain, getJavaScript, getCss, 'gallery');
+    } else if (option === 'Текстовый блок') {
+      await createBlock();
+      await handleGetMain(index, getMain, getJavaScript, getCss, 'text-block');
+    } else if (option === 'Изображение + текстовый блок') {
+      await createBlock();
+      await handleGetMain(index, getMain, getJavaScript, getCss, 'image-text');
+    } else if (option === 'Текстовый блок + изображение') {
+      await createBlock();
+      await handleGetMain(index, getMain, getJavaScript, getCss, 'text-image');
+    } else if (option === 'Видео') {
+      await createBlock();
+    } else if (option === 'Список элементов в виде сетки') {
+      await createBlock();
+      await handleGetMain(index, getMain, getJavaScript, getCss, 'list-grid');
+    } else if (option === 'Список элементов') {
+      await createBlock();
+      await handleGetMain(index, getMain, getJavaScript, getCss, 'list-grid');
     }
   };
 
@@ -72,13 +88,53 @@ export default function DropDownListChoice({ index, setSidebarContent }) {
           <li className="dropdown-element" onClick={() => selectOption('Галлерея')}>
             Галлерея
           </li>
-          <li className="dropdown-element" onClick={() => selectOption('Вариант 3')}>
-            Вариант 3
+          <li className="dropdown-element" onClick={() => selectOption('Текстовый блок')}>
+            Текстовый блок
+          </li>
+          <li
+            className="dropdown-element"
+            onClick={() => selectOption('Изображение + текстовый блок')}
+          >
+            Изображение + текстовый блок
+          </li>
+          <li
+            className="dropdown-element"
+            onClick={() => selectOption('Текстовый блок + изображение')}
+          >
+            Текстовый блок + изображение
+          </li>
+          <li className="dropdown-element" onClick={() => selectOption('Видео')}>
+            Видео
+          </li>
+          <li
+            className="dropdown-element"
+            onClick={() => selectOption('Список элементов в виде сетки')}
+          >
+            Список элементов в виде сетки
           </li>
         </ul>
       )}
-      {selectedOption === 'Слайдер' && <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpSlider'}/>}
-      {selectedOption === 'Галлерея' && <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpGallery'}/>}
+      {selectedOption === 'Слайдер' && (
+        <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpSlider'} />
+      )}
+      {selectedOption === 'Галлерея' && (
+        <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpGallery'} />
+      )}
+      {selectedOption === 'Текстовый блок' && (
+        <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpTextBlock'} />
+      )}
+      {selectedOption === 'Изображение + текстовый блок' && (
+        <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpImageText'} />
+      )}
+      {selectedOption === 'Текстовый блок + изображение' && (
+        <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpTextImage'} />
+      )}
+      {selectedOption === 'Видео' && (
+        <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpVideo'} />
+      )}
+      {selectedOption === 'Список элементов в виде сетки' && (
+        <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpListGrid'} />
+      )}
     </div>
   );
 }

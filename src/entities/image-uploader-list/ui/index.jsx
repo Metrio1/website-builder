@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function ImageUploader({ numberOfSlide, onImageSelect, place }) {
+export default function ImageUploaderList({ numberOfSlide, onImageSelect, place }) {
   const [selectedFile, setSelectedFile] = useState('');
 
   const handleFileChange = (event) => {
@@ -31,17 +31,14 @@ export default function ImageUploader({ numberOfSlide, onImageSelect, place }) {
 
           const iframe = document.querySelector('iframe');
           const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-          const swiperContainer = iframeDocument.querySelector(`.${place}`);
+          const imageBox = iframeDocument.querySelector(`.${place}`);
 
-          const slide = swiperContainer.children[numberOfSlide - 1];
-          const imageBox = slide.querySelector('.image-box');
+          imageBox.innerHTML = '';
 
           const img = document.createElement('img');
           img.src = imageUrl;
-          const placementImg = document.createElement('div');
-          placementImg.classList.add(`image-box__${numberOfSlide}_${numberOfSlide + 1}`);
-          placementImg.appendChild(img);
-          imageBox.appendChild(placementImg);
+          img.classList.add(`image`);
+          imageBox.appendChild(img);
 
           iframe.srcdoc = iframeDocument.documentElement.innerHTML;
         })

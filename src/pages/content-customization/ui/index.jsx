@@ -13,6 +13,13 @@ import SettingUpHeader from '../../../widgets/setting-up-header/ui/index.jsx';
 import SettingUpFooter from '../../../widgets/setting-up-footer/ui/index.jsx';
 import SettingUpMain from "../../../widgets/setting-up-main/ui/index.jsx";
 import SettingUpSlider from "../../../widgets/setting-up-slider/ui/index.jsx";
+import SettingUpGallery from "../../../widgets/setting-up-gallery/ui/index.jsx";
+import SettingUpTextBlock from "../../../widgets/setting-up-text-block/ui/index.jsx";
+import SettingUpImageText from "../../../widgets/setting-up-image-text/ui/index.jsx";
+import SettingUpTextImage from "../../../widgets/setting-up-text-image/ui/index.jsx";
+import SettingUpVideo from "../../../widgets/setting-up-video/ui/index.jsx";
+import SettingUpListGrid from "../../../widgets/setting-up-list-grid/ui/index.jsx";
+import SettingUpList from "../../../widgets/setting-up-list/ui/index.jsx";
 
 export default function ContentCustomization() {
   const templateId = useSelector((state) => state.templateSlice.websiteTemplate);
@@ -37,6 +44,20 @@ export default function ContentCustomization() {
         return <SettingUpMain setSidebarContent={setSidebarContent} />;
       case 'SettingUpSlider':
         return <SettingUpSlider setSidebarContent={setSidebarContent} />;
+      case 'SettingUpGallery':
+        return <SettingUpGallery setSidebarContent={setSidebarContent} />;
+      case 'SettingUpTextBlock':
+        return <SettingUpTextBlock setSidebarContent={setSidebarContent} />;
+      case 'SettingUpImageText':
+        return <SettingUpImageText setSidebarContent={setSidebarContent} />;
+      case 'SettingUpTextImage':
+        return <SettingUpTextImage setSidebarContent={setSidebarContent} />;
+      case 'SettingUpVideo':
+        return <SettingUpVideo setSidebarContent={setSidebarContent} />;
+      case 'SettingUpListGrid':
+        return <SettingUpListGrid setSidebarContent={setSidebarContent} />;
+      case 'SettingUpList':
+        return <SettingUpList setSidebarContent={setSidebarContent} />;
       default:
         return <SidebarSettingTags setSidebarContent={setSidebarContent} />;
     }

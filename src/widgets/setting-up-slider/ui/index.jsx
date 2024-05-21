@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ImageUploader from '../../../entities/image-uploader/ui/index.jsx';
-import SettingsButton from "../../../shared/settings-button/ui/index.jsx";
-import DropDownListInteractiveBlock from "../../../entities/drop-down-list-interactive-block/ui/index.jsx";
+import SettingsButton from '../../../shared/settings-button/ui/index.jsx';
+import DropDownListInteractiveBlock from '../../../entities/drop-down-list-interactive-block/ui/index.jsx';
 
 export default function SettingUpSlider({ setSidebarContent }) {
   const [numberOfSlide, setNumberOfSlide] = useState(2);
@@ -18,7 +18,7 @@ export default function SettingUpSlider({ setSidebarContent }) {
   const [imageUploaders, setImageUploaders] = useState([
     {
       id: 1,
-      component: <ImageUploader key={0} numberOfSlide={1} onImageSelect={handleImageSelect}/>,
+      component: <ImageUploader key={0} numberOfSlide={1} onImageSelect={handleImageSelect} place={"swiper-wrapper"} />,
     },
   ]);
 
@@ -46,7 +46,7 @@ export default function SettingUpSlider({ setSidebarContent }) {
     const newImageUploader = {
       id: newKey,
       component: (
-          <ImageUploader key={newKey} numberOfSlide={newKey} onImageSelect={handleImageSelect}/>
+        <ImageUploader key={newKey} numberOfSlide={newKey} onImageSelect={handleImageSelect} place={"swiper-wrapper"} />
       ),
     };
     setImageUploaders((prevUploaders) => [...prevUploaders, newImageUploader]);
@@ -57,8 +57,8 @@ export default function SettingUpSlider({ setSidebarContent }) {
     const lastSlide = swiperContainer.lastElementChild;
 
     lastSlide.insertAdjacentHTML(
-        'afterend',
-        `
+      'afterend',
+      `
         <div class="card swiper-slide">
             <div class="image-box"></div>
             <div class="inner__${numberOfSlide}">
@@ -85,24 +85,26 @@ export default function SettingUpSlider({ setSidebarContent }) {
   };
 
   return (
-      <div>
-        <button onClick={handleBack}>Вернуться</button>
-        <h3>Настройка слайдера</h3>
-        <ul>
-          {imageUploaders.map((uploader, index) => (
-              <li key={uploader.id}>
-                Слайд {uploader.id}
-                {uploader.component}
-                <div className="interactive-block">
-                  <button onClick={() => handleInteractiveBlock(uploader.id)}>
-                    Добавить интерактивный блок на слайд
-                  </button>
-                  {interactiveBlockId === uploader.id && <DropDownListInteractiveBlock index={uploader.id}/>}
-                </div>
-              </li>
-          ))}
-        </ul>
-        {imageUploaders.length < 5 && <button onClick={handleSlides}>Добавить слайд</button>}
-      </div>
+    <div>
+      <button onClick={handleBack}>Вернуться</button>
+      <h3>Настройка слайдера</h3>
+      <ul>
+        {imageUploaders.map((uploader, index) => (
+          <li key={uploader.id}>
+            Слайд {uploader.id}
+            {uploader.component}
+            <div className="interactive-block">
+              <button onClick={() => handleInteractiveBlock(uploader.id)}>
+                Добавить интерактивный блок на слайд
+              </button>
+              {interactiveBlockId === uploader.id && (
+                <DropDownListInteractiveBlock index={uploader.id} />
+              )}
+            </div>
+          </li>
+        ))}
+      </ul>
+      {imageUploaders.length < 5 && <button onClick={handleSlides}>Добавить слайд</button>}
+    </div>
   );
 }

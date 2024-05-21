@@ -14,6 +14,8 @@ export const handleGetMain = async (
 
   const { data: tagMain } = await getMain(main);
 
+  console.log(getMain)
+
   const iframe = document.querySelector('iframe');
   const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
   const node = iframeDocument.querySelector('.sgcms-layout');
@@ -45,7 +47,5 @@ export const handleGetMain = async (
     const styleTag3 = document.createElement('style');
     styleTag3.textContent = cssMain3?.data;
     iframeDocument.head.appendChild(styleTag3);
-
-
   }
 };

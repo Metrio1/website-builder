@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-export default function ImageUploader({ numberOfSlide, onImageSelect, place }) {
-  const [selectedFile, setSelectedFile] = useState('');
+export default function ImageUploaderSolo() {
+  const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -9,7 +9,7 @@ export default function ImageUploader({ numberOfSlide, onImageSelect, place }) {
 
   const handleUpload = () => {
     if (selectedFile) {
-      const fileName = `${numberOfSlide}.jpg`;
+      const fileName = 'image-text.jpg'; // Название файла, которое будет использовано на сервере
 
       const formData = new FormData();
       formData.append('image', selectedFile, fileName);
@@ -27,21 +27,18 @@ export default function ImageUploader({ numberOfSlide, onImageSelect, place }) {
         .then((data) => {
           const imageUrl = `http://127.0.0.1:5000/static/${fileName}`;
           console.log('File uploaded:', data);
-          onImageSelect(numberOfSlide, imageUrl);
 
           const iframe = document.querySelector('iframe');
           const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-          const swiperContainer = iframeDocument.querySelector(`.${place}`);
-
-          const slide = swiperContainer.children[numberOfSlide - 1];
-          const imageBox = slide.querySelector('.image-box');
+          const imageBox = iframeDocument.querySelector('.image-text__image');
+          
+          imageBox.innerHTML = '';
 
           const img = document.createElement('img');
           img.src = imageUrl;
-          const placementImg = document.createElement('div');
-          placementImg.classList.add(`image-box__${numberOfSlide}_${numberOfSlide + 1}`);
-          placementImg.appendChild(img);
-          imageBox.appendChild(placementImg);
+          img.style.maxHeight = '480px';
+          img.style.maxWidth = '640px';
+          imageBox.appendChild(img);
 
           iframe.srcdoc = iframeDocument.documentElement.innerHTML;
         })

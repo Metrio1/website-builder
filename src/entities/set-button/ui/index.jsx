@@ -14,15 +14,15 @@ export default function SetButton({ place }) {
       const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
       const node = iframeDocument.querySelector('.sgcms-layout');
 
-      const placementBtn = node.querySelector(`.${place}`);
+      const placementContainer = node.querySelector(`.${place}`);
 
-      if (!placementBtn) {
+      if (placementContainer && !placementContainer.querySelector('.btn')) {
         // Создаем кнопку, если её еще нет
         const newButton = document.createElement('a');
         newButton.href = linkUrl || '#';
-        newButton.className = `btn ibanner__href ${place}`;
+        newButton.className = `btn`;
         newButton.innerHTML = inputText || 'Кнопка';
-        node.querySelector('.ibanner-content').appendChild(newButton);
+        placementContainer.appendChild(newButton);
       }
     }
   };
@@ -33,7 +33,7 @@ export default function SetButton({ place }) {
 
     const iframe = document.querySelector('iframe');
     const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-    const button = iframeDocument.querySelector(`.${place}`);
+    const button = iframeDocument.querySelector(`.${place} .btn`);
 
     if (button) {
       button.innerHTML = newText;
@@ -46,7 +46,7 @@ export default function SetButton({ place }) {
 
     const iframe = document.querySelector('iframe');
     const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-    const button = iframeDocument.querySelector(`.${place}`);
+    const button = iframeDocument.querySelector(`.${place} .btn`);
 
     if (button) {
       button.href = newLink;
@@ -54,23 +54,23 @@ export default function SetButton({ place }) {
   };
 
   return (
-    <div>
-      <button className="dropdown-button" onClick={toggleDropdown}>
-        Добавить кнопку
-      </button>
-      {isOpen && (
-        <div className="input-container">
-          <h3>Введите текст для кнопки</h3>
-          <textarea value={inputText} onChange={handleInputChange} maxLength={20} />
-          <h3>Введите ссылку для кнопки</h3>
-          <input
-            type="text"
-            placeholder="Enter link URL"
-            value={linkUrl}
-            onChange={handleUrlChange}
-          />
-        </div>
-      )}
-    </div>
+      <div>
+        <button className="dropdown-button" onClick={toggleDropdown}>
+          Добавить кнопку
+        </button>
+        {isOpen && (
+            <div className="input-container">
+              <h3>Введите текст для кнопки</h3>
+              <textarea value={inputText} onChange={handleInputChange} maxLength={20} />
+              <h3>Введите ссылку для кнопки</h3>
+              <input
+                  type="text"
+                  placeholder="Введите URL"
+                  value={linkUrl}
+                  onChange={handleUrlChange}
+              />
+            </div>
+        )}
+      </div>
   );
 }
