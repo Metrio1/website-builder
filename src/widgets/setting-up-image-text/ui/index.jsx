@@ -18,7 +18,7 @@ export default function SettingUpImageText({ setSidebarContent }) {
       </div>
       <div>
         <h3>Основной текст</h3>
-        <SetText maxLength={600} place={'image-text__text'} textType={'text'} />
+        <SetText maxLength={1000} place={'image-text__text'} textType={'text'} />
       </div>
     </div>
   );

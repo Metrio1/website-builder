@@ -18,8 +18,8 @@ export default function DropDownListInteractiveBlock({ index }) {
       </button>
       {isOpen && (
         <div className="dropdown-list">
-          <SetText maxLength={30} place={`ibanner__title__text-${index}`} />
-          <SetButton />
+          <SetText maxLength={30} place={`ibanner__title__text-${index}`} textType={"small-header"} />
+          <SetButton place={`ibanner__button-${index}`} />
         </div>
       )}
     </div>

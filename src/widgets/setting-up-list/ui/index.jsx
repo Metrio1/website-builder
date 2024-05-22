@@ -38,7 +38,7 @@ export default function SettingUpList({ setSidebarContent }) {
     if (iframe) {
       const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
       if (iframeDocument) {
-        const swiperContainer = iframeDocument.querySelector('.list-grid');
+        const swiperContainer = iframeDocument.querySelector('.list-flex');
         if (swiperContainer) {
           const lastSlide = swiperContainer.lastElementChild;
 
@@ -47,10 +47,12 @@ export default function SettingUpList({ setSidebarContent }) {
             `
               <div class="list-element list-element__${newNumberOfSlide}">
                 <div class="image-element image-element__${newNumberOfSlide}"></div>
-                <div class="header-element header-element__${newNumberOfSlide}"></div>
-                <div class="text-element text-element__${newNumberOfSlide}"></div>
+                <div class="text-wrapper">
+            <div class="header-element header-element__${newNumberOfSlide}"></div>
+            <div class="text-element text-element__${newNumberOfSlide}"></div>
+                </div>
                 <div class="button-element button-element__${newNumberOfSlide}"></div>
-              </div>
+            </div>
             `,
           );
 
@@ -92,7 +94,7 @@ export default function SettingUpList({ setSidebarContent }) {
               place={`header-element__${uploader.id}`}
               textType={'small-header'}
             />
-            <SetText maxLength={100} place={`text-element__${uploader.id}`} textType={'text'} />
+            <SetText maxLength={600} place={`text-element__${uploader.id}`} textType={'text'} />
             <SetButton place={`button-element__${uploader.id}`} />
           </li>
         ))}

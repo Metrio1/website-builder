@@ -71,7 +71,7 @@ export default function DropDownListChoice({ index, setSidebarContent }) {
       await handleGetMain(index, getMain, getJavaScript, getCss, 'list-grid');
     } else if (option === 'Список элементов') {
       await createBlock();
-      await handleGetMain(index, getMain, getJavaScript, getCss, 'list-grid');
+      await handleGetMain(index, getMain, getJavaScript, getCss, 'list');
     }
   };
 
@@ -97,12 +97,12 @@ export default function DropDownListChoice({ index, setSidebarContent }) {
           >
             Изображение + текстовый блок
           </li>
-          <li
-            className="dropdown-element"
-            onClick={() => selectOption('Текстовый блок + изображение')}
-          >
-            Текстовый блок + изображение
-          </li>
+          {/*<li*/}
+          {/*  className="dropdown-element"*/}
+          {/*  onClick={() => selectOption('Текстовый блок + изображение')}*/}
+          {/*>*/}
+          {/*  Текстовый блок + изображение*/}
+          {/*</li>*/}
           <li className="dropdown-element" onClick={() => selectOption('Видео')}>
             Видео
           </li>
@@ -111,6 +111,9 @@ export default function DropDownListChoice({ index, setSidebarContent }) {
             onClick={() => selectOption('Список элементов в виде сетки')}
           >
             Список элементов в виде сетки
+          </li>
+          <li className="dropdown-element" onClick={() => selectOption('Список элементов')}>
+            Список элементов
           </li>
         </ul>
       )}
@@ -134,6 +137,9 @@ export default function DropDownListChoice({ index, setSidebarContent }) {
       )}
       {selectedOption === 'Список элементов в виде сетки' && (
         <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpListGrid'} />
+      )}
+      {selectedOption === 'Список элементов' && (
+          <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpList'} />
       )}
     </div>
   );

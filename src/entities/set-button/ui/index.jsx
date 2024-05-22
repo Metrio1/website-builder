@@ -37,6 +37,7 @@ export default function SetButton({ place }) {
 
     if (button) {
       button.innerHTML = newText;
+      button.target = '_blank';
     }
   };
 

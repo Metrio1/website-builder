@@ -13,7 +13,7 @@ export default function SettingUpTextBlock({ setSidebarContent }) {
       <h2>Настройка текстового блока</h2>
       <div>
         <h3>Заголовок</h3>
-        <SetText maxLength={30} place={'text-block__top'} textType={'header'} />
+        <SetText maxLength={30} place={'text-block__top'} textType={'big-header'} />
       </div>
       <div>
         <h3>Текст</h3>

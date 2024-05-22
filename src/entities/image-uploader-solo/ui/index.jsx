@@ -36,8 +36,8 @@ export default function ImageUploaderSolo() {
 
           const img = document.createElement('img');
           img.src = imageUrl;
-          img.style.maxHeight = '480px';
-          img.style.maxWidth = '640px';
+          img.style.maxHeight = '400px';
+          img.style.maxWidth = '600px';
           imageBox.appendChild(img);
 
           iframe.srcdoc = iframeDocument.documentElement.innerHTML;

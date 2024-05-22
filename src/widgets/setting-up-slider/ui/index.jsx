@@ -34,7 +34,7 @@ export default function SettingUpSlider({ setSidebarContent }) {
       <div class="ibanner__title">
         <b class="ibanner__title__text-${index}">Текст ${index}<br/></b>
       </div>
-      <div class="ibanner__button"> 
+      <div class="ibanner__button-${index}"> 
       </div> 
     </div>
     `;
