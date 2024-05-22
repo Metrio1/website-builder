@@ -4,7 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { resetSelectedTags } from '../../../entities/tag/model/tag.slice.js';
-import {clearLogoImage} from "../../../entities/set-logo-image/model/logoImage.slice.js";
+import { clearLogoImage } from '../../../entities/set-logo-image/model/logoImage.slice.js';
+import {clearAllSelectedOptions} from "../../../widgets/setting-up-main/model/selected-option.slice.js";
+import {clearBlocks} from "../../../widgets/setting-up-main/model/number-of-blocks.slice.js";
 
 export default function ColorSpectrum() {
   const dispatch = useDispatch();
@@ -12,6 +14,8 @@ export default function ColorSpectrum() {
   useEffect(() => {
     dispatch(resetSelectedTags());
     dispatch(clearLogoImage());
+    dispatch(clearAllSelectedOptions());
+    dispatch(clearBlocks());
   }, [dispatch]);
 
   const navigate = useNavigate();
@@ -35,12 +39,12 @@ export default function ColorSpectrum() {
           <div className="color-spectrum__colorsets">
             <ColorsetCard
               image={'colorset1.svg'}
-              description={'Гамма с фиолетовыми оттенками'}
+              description={'Гамма с синими оттенками'}
               colorsetNumber={'colorset1'}
             />
             <ColorsetCard
               image={'colorset2.svg'}
-              description={'Гамма с синими оттенками'}
+              description={'Гамма с фиолетовыми оттенками'}
               colorsetNumber={'colorset2'}
             />
             <ColorsetCard

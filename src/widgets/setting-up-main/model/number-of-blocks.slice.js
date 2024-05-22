@@ -12,8 +12,11 @@ const numberOfBlocksSlice = createSlice({
       }
       return state;
     },
+    clearBlocks: () => {
+      return initialState; // Сбрасываем к начальному значению
+    },
   },
 });
 
-export const { incrementBlocks } = numberOfBlocksSlice.actions;
+export const { incrementBlocks, clearBlocks } = numberOfBlocksSlice.actions;
 export default numberOfBlocksSlice.reducer;

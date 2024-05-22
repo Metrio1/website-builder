@@ -8,8 +8,11 @@ const selectedOptionSlice = createSlice({
       const { index, option } = action.payload;
       state[index] = option;
     },
+    clearAllSelectedOptions: (state) => {
+      return {}; // возвращаем пустой объект, чтобы очистить все опции
+    },
   },
 });
 
-export const { setSelectedOption } = selectedOptionSlice.actions;
+export const { setSelectedOption, clearAllSelectedOptions } = selectedOptionSlice.actions;
 export default selectedOptionSlice.reducer;
