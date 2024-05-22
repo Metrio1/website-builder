@@ -9,10 +9,13 @@ import {
 } from '../../layout-pages/api/api.js';
 import SettingsButton from '../../../shared/settings-button/ui/index.jsx';
 import { handleGetMain } from '../../../shared/handle-get-main/index.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSelectedOption } from '../../../widgets/setting-up-main/model/selected-option.slice.js';
 
 export default function DropDownListChoice({ index, setSidebarContent }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState('');
+  const selectedOption = useSelector((state) => state.selectedOption[index]);
+  const dispatch = useDispatch();
 
   const [getTag, getTagState] = useLazyGetTagQuery();
   const [getMain, getMainState] = useLazyGetMainQuery();
@@ -36,7 +39,7 @@ export default function DropDownListChoice({ index, setSidebarContent }) {
   };
 
   const selectOption = async (option) => {
-    setSelectedOption(option);
+    dispatch(setSelectedOption({ index, option }));
     setIsOpen(false);
     if (option === 'Слайдер') {
       await createBlock();
@@ -97,12 +100,6 @@ export default function DropDownListChoice({ index, setSidebarContent }) {
           >
             Изображение + текстовый блок
           </li>
-          {/*<li*/}
-          {/*  className="dropdown-element"*/}
-          {/*  onClick={() => selectOption('Текстовый блок + изображение')}*/}
-          {/*>*/}
-          {/*  Текстовый блок + изображение*/}
-          {/*</li>*/}
           <li className="dropdown-element" onClick={() => selectOption('Видео')}>
             Видео
           </li>
@@ -139,7 +136,7 @@ export default function DropDownListChoice({ index, setSidebarContent }) {
         <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpListGrid'} />
       )}
       {selectedOption === 'Список элементов' && (
-          <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpList'} />
+        <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpList'} />
       )}
     </div>
   );

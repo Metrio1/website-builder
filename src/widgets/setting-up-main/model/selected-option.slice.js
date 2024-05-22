@@ -1,10 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const selectedOptionSlice = createSlice({
-  name: 'selectedOption',
-  initialState: '',
+  name: 'selectedOptions',
+  initialState: {},
   reducers: {
-    setSelectedOption: (state, action) => action.payload,
+    setSelectedOption: (state, action) => {
+      const { index, option } = action.payload;
+      state[index] = option;
+    },
   },
 });
 
