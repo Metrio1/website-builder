@@ -10,28 +10,21 @@ import React, { useState } from 'react';
 import LinkCreation from '../../../entities/link-creation/ui/index.jsx';
 import DropDownListChoice from '../../../entities/drop-down-list-choice/ui/index.jsx';
 import SliderCreation from '../../../entities/slider-creation/ui/index.jsx';
+import {useDispatch, useSelector} from "react-redux";
+import { incrementBlocks } from '../model/number-of-blocks.slice.js';
 
 export default function SettingUpMain({ setSidebarContent }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('');
-  const [numberOfBlocks, setNumberOfBlocks] = useState(1);
+  const numberOfBlocks = useSelector((state) => state.numberOfBlocks);
+  const dispatch = useDispatch();
 
   const handleBack = () => {
     setSidebarContent(null);
   };
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const selectOption = (option) => {
-    setSelectedOption(option);
-    setIsOpen(false);
-  };
 
   const handleCreateBlock = () => {
-    if (numberOfBlocks < 5) {
-      setNumberOfBlocks(numberOfBlocks + 1);
-    }
+    dispatch(incrementBlocks());
   };
 
   return (
@@ -43,7 +36,7 @@ export default function SettingUpMain({ setSidebarContent }) {
             <DropDownListChoice index={index} setSidebarContent={setSidebarContent} />
           </li>
         ))}
-        {numberOfBlocks < 5 && (
+        {numberOfBlocks < 7 && (
           <li>
             <button onClick={handleCreateBlock}>Добавить блок с контентом</button>
           </li>

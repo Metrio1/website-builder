@@ -19,7 +19,7 @@ export default function DropDownListLogo() {
       {isOpen && (
         <ul className="dropdown-list">
           <div>
-            <SetText maxLength={20} place={'logo-text'} />
+            <SetText maxLength={20} place={'logo-text'} textType={'small-header'} />
           </div>
             <SetLogoImage />
         </ul>

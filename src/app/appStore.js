@@ -5,7 +5,7 @@ import templateSlice, { setTemplateId } from '../entities/template/model/templat
 import tagSlice from '../entities/tag/model/tag.slice.js';
 import logoImageSlice from '../entities/set-logo-image/model/logoImage.slice.js';
 import selectedOptionReducer from '../widgets/setting-up-main/model/selected-option.slice.js';
-
+import numberOfBlocksReducer from '../widgets/setting-up-main/model/number-of-blocks.slice.js';
 export const store = configureStore({
   reducer: {
     [api.reducerPath]: api.reducer,
@@ -14,6 +14,7 @@ export const store = configureStore({
     tagSlice: tagSlice,
     logoImageSlice: logoImageSlice,
     selectedOption: selectedOptionReducer,
+    numberOfBlocks: numberOfBlocksReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(api.middleware),
 });

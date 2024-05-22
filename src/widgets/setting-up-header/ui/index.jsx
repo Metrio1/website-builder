@@ -16,7 +16,7 @@ export default function SettingUpHeader({ setSidebarContent }) {
       <DropDownListLogo />
       {/*<DropDownListChoice />*/}
       <DropDownListMenu typesOfLinks={'menu__link'} maximumNumberOfLinks={5} />
-      <DropDownListPhone />
+      <DropDownListPhone place={'phone'} />
     </div>
   );
 }
