@@ -1,4 +1,5 @@
 import './index.scss';
+import { Button, Flex } from 'antd';
 import { useState } from 'react';
 import SetText from '../../set-text/ui/index.jsx';
 
@@ -12,12 +13,12 @@ export default function DropDownListText() {
   return (
     <div className="dropdown">
       <h1></h1>
-      <button className="dropdown-button" onClick={toggleDropdown}>
+      <Button className="dropdown-button" onClick={toggleDropdown}>
         Текст
-      </button>
+      </Button>
       {isOpen && (
         <div className="dropdown-list">
-          <SetText maxLength={150} place={'footer-top1'} />
+          <SetText maxLength={150} place={'footer-top1'} color={'white'} font={'Arial'} />
         </div>
       )}
     </div>

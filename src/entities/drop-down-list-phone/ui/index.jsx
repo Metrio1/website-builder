@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { Button, Flex } from 'antd';
+import { Input } from 'antd';
 
-export default function DropDownListPhone({ place }) {
+export default function DropDownListPhone({ place, color }) {
   const [linkText, setLinkText] = useState('');
   const [linkUrl, setLinkUrl] = useState('');
   const [isOpen, setIsOpen] = useState(false);
@@ -28,6 +30,7 @@ export default function DropDownListPhone({ place }) {
     link.href = linkUrl || '#'; // Если URL не указан, использовать '#'
     link.textContent = formattedPhoneNumber;
     link.style.fontSize = '24px';
+    link.style.color = color;
 
     const iframe = document.querySelector('iframe');
     const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
@@ -41,26 +44,26 @@ export default function DropDownListPhone({ place }) {
 
   return (
     <div className="dropdown">
-      <button className="dropdown-button" onClick={toggleDropdown}>
+      <Button className="dropdown-button" onClick={toggleDropdown}>
         Телефон
-      </button>
+      </Button>
       {isOpen && (
         <div className="dropdown-list">
           <h3>Добавить телефон</h3>
-          <input
+          <Input
             type="text"
             placeholder="Введите номер телефона"
             value={linkText}
             onChange={(event) => setLinkText(event.target.value)}
             maxLength={11}
           />
-          <input
+          <Input
             type="text"
             placeholder="Введите ссылку"
             value={linkUrl}
             onChange={(event) => setLinkUrl(event.target.value)}
           />
-          <button onClick={handleLinkCreation}>Create Link</button>
+          <Button onClick={handleLinkCreation}>Create Link</Button>
         </div>
       )}
     </div>

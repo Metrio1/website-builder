@@ -5,6 +5,7 @@ import ImageUploader from '../../../entities/image-uploader/ui/index.jsx';
 import ImageUploaderList from '../../../entities/image-uploader-list/ui/index.jsx';
 import SetText from "../../../entities/set-text/ui/index.jsx";
 import SetButton from "../../../entities/set-button/ui/index.jsx";
+import BackButton from "../../../shared/back-button/ui/index.jsx";
 
 export default function SettingUpListGrid({ setSidebarContent }) {
   const [numberOfSlide, setNumberOfSlide] = useState(1);
@@ -26,6 +27,7 @@ export default function SettingUpListGrid({ setSidebarContent }) {
           numberOfSlide={1}
           onImageSelect={handleImageSelect}
           place={`image-element__1`}
+          imageClass={`list-grid__image`}
         />
       ),
     },
@@ -62,6 +64,7 @@ export default function SettingUpListGrid({ setSidebarContent }) {
                 numberOfSlide={newNumberOfSlide}
                 onImageSelect={handleImageSelect}
                 place={`image-element__${newNumberOfSlide}`}
+                imageClass={`list-grid__image`}
               />
             ),
           };
@@ -74,13 +77,9 @@ export default function SettingUpListGrid({ setSidebarContent }) {
     }
   };
 
-  const handleBack = () => {
-    setSidebarContent('SettingUpMain');
-  };
-
   return (
-    <div>
-      <button onClick={handleBack}>Вернуться</button>
+    <div className={'setting-up-list-grid'}>
+      <BackButton setSidebarContent={setSidebarContent} />
       <h3>Настройка списка</h3>
       <ul>
         {imageUploaderLists.map((uploader) => (

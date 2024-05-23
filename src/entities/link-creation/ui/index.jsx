@@ -1,4 +1,6 @@
 import './index.scss';
+import { Button, Flex } from 'antd';
+import { Input } from 'antd';
 import { useState } from 'react';
 
 export default function LinkCreation({ numberOfLink, typesOfLinks }) {
@@ -18,6 +20,7 @@ export default function LinkCreation({ numberOfLink, typesOfLinks }) {
     link.href = linkUrl || '#'; // Если URL не указан, использовать '#'
     link.textContent = linkText;
     link.style.fontSize = '20px';
+    link.style.color = 'white';
 
     const iframe = document.querySelector('iframe');
     const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
@@ -31,16 +34,16 @@ export default function LinkCreation({ numberOfLink, typesOfLinks }) {
 
   return (
     <div>
-      <h3>Создать ссылку</h3>
-      <input
+      <h3 className={'link-creation'}>Создать ссылку</h3>
+      <Input
         type="text"
-        placeholder="Enter link text"
+        placeholder="Введите текст ссылки"
         value={linkText}
         onChange={handleTextChange}
         maxLength={15}
       />
-      <input type="text" placeholder="Enter link URL" value={linkUrl} onChange={handleUrlChange} />
-      <button onClick={handleLinkCreation}>Create Link</button>
+      <Input type="text" placeholder="Введите URL ссылки" value={linkUrl} onChange={handleUrlChange} />
+      <Button onClick={handleLinkCreation}>Create Link</Button>
     </div>
   );
 }

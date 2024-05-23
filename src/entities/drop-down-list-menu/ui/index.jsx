@@ -1,4 +1,5 @@
 import './index.scss';
+import { Button, Flex } from 'antd';
 import { useState } from 'react';
 import д from '../../link-creation/ui/index.jsx';
 import LinkCreation from '../../link-creation/ui/index.jsx';
@@ -19,9 +20,9 @@ export default function DropDownListMenu({ typesOfLinks, maximumNumberOfLinks })
 
   return (
     <div className="dropdown">
-      <button className="dropdown-button" onClick={toggleDropdown}>
+      <Button className="dropdown-button" onClick={toggleDropdown}>
         Меню
-      </button>
+      </Button>
       {isOpen && (
         <ul className="dropdown-list">
           {[...Array(numberOfLink)].map((_, index) => (
@@ -31,7 +32,7 @@ export default function DropDownListMenu({ typesOfLinks, maximumNumberOfLinks })
           ))}
           {numberOfLink < maximumNumberOfLinks && (
             <li>
-              <button onClick={handleCreateLink}>Добавить ссылку</button>
+              <Button onClick={handleCreateLink}>Добавить ссылку</Button>
             </li>
           )}
         </ul>

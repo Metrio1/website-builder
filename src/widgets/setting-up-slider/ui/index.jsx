@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ImageUploader from '../../../entities/image-uploader/ui/index.jsx';
 import SettingsButton from '../../../shared/settings-button/ui/index.jsx';
 import DropDownListInteractiveBlock from '../../../entities/drop-down-list-interactive-block/ui/index.jsx';
+import BackButton from "../../../shared/back-button/ui/index.jsx";
 
 export default function SettingUpSlider({ setSidebarContent }) {
   const [numberOfSlide, setNumberOfSlide] = useState(2);
@@ -80,13 +81,9 @@ export default function SettingUpSlider({ setSidebarContent }) {
     setNumberOfSlide((prevSlide) => prevSlide + 1);
   };
 
-  const handleBack = () => {
-    setSidebarContent('SettingUpMain');
-  };
-
   return (
     <div>
-      <button onClick={handleBack}>Вернуться</button>
+      <BackButton setSidebarContent={setSidebarContent} />
       <h3>Настройка слайдера</h3>
       <ul>
         {imageUploaders.map((uploader, index) => (

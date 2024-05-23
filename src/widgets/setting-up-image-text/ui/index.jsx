@@ -2,15 +2,13 @@ import './index.scss';
 import SetText from '../../../entities/set-text/ui/index.jsx';
 import React from 'react';
 import ImageUploaderSolo from "../../../entities/image-uploader-solo/ui/index.jsx";
+import BackButton from "../../../shared/back-button/ui/index.jsx";
 
 export default function SettingUpImageText({ setSidebarContent }) {
-  const handleBack = () => {
-    setSidebarContent('SettingUpMain');
-  };
 
   return (
-    <div>
-      <button onClick={handleBack}>Вернуться</button>
+    <div className={'setting-up-image-text'}>
+        <BackButton setSidebarContent={setSidebarContent}/>
       <h2>Настройка текстового блока с изображением слева</h2>
       <div>
         <h3>Изображение</h3>

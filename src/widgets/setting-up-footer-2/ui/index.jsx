@@ -7,7 +7,7 @@ import DropDownListSocialMedia from '../../../entities/drop-down-social-media/ui
 import { useEffect } from 'react';
 import BackButton from "../../../shared/back-button/ui/index.jsx";
 
-export default function SettingUpFooter({ setSidebarContent }) {
+export default function SettingUpFooter2({ setSidebarContent }) {
 
   useEffect(() => {
     const iframe = document.querySelector('iframe');
@@ -35,13 +35,14 @@ export default function SettingUpFooter({ setSidebarContent }) {
   }, []);
 
   return (
-    <div className="setting-up-footer-2">
+    <div className="setting-up-footer">
       <h2>Настройка футера</h2>
-      <BackButton setSidebarContent={setSidebarContent} />
+        <BackButton setSidebarContent={setSidebarContent}/>
       <DropDownListText />
       <DropDownListMenu typesOfLinks={'footer-top2__link'} maximumNumberOfLinks={5} />
-      <DropDownListPhone place={'footer-top3__phone'} color={'white'} />
-      <DropDownListEmail place={'footer-top3__e-mail'} />
+      <DropDownListMenu typesOfLinks={'footer-top3__link'} maximumNumberOfLinks={5} />
+      <DropDownListPhone place={'footer-bottom__contacts__phone'} color={'white'} />
+      <DropDownListEmail place={'footer-bottom__contacts__e-mail'} />
       <DropDownListSocialMedia />
     </div>
   );

@@ -1,15 +1,13 @@
 import './index.scss';
 import VideoUploader from '../../../entities/video-uploader/ui/index.jsx';
 import React from 'react';
+import BackButton from "../../../shared/back-button/ui/index.jsx";
 
 export default function SettingUpVideo({ setSidebarContent }) {
-  const handleBack = () => {
-    setSidebarContent('SettingUpMain');
-  };
 
   return (
     <div>
-      <button onClick={handleBack}>Вернуться</button>
+        <BackButton setSidebarContent={setSidebarContent}/>
         <h2>Настройка видео</h2>
       <VideoUploader />
     </div>

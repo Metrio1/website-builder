@@ -14,7 +14,7 @@ export default function SetLogoImage() {
   const placementTag = node.querySelector('.logo-image');
 
   if (uploadedImage) {
-    placementTag.innerHTML = `<img src="${uploadedImage}" alt="Uploaded" style="max-height: 40px;" />`;
+    placementTag.innerHTML = `<img src="${uploadedImage}" alt="Uploaded" style="height: 40px; width: 40px; border-radius: 50%; object-fit: cover;" />`;
   }
 
   const handleLogoImageChange = (event) => {

@@ -1,7 +1,9 @@
 import './index.scss';
+import { Button, Flex } from 'antd';
+import { Input } from 'antd';
 import { useState } from 'react';
 
-export default function EmailCreation() {
+export default function EmailCreation({place, color}) {
   const [emailText, setEmailText] = useState('');
   const [email, setEmail] = useState('');
 
@@ -18,11 +20,12 @@ export default function EmailCreation() {
     link.href = email || '#'; // Если URL не указан, использовать '#'
     link.textContent = emailText;
     link.style.fontSize = '20px';
+    link.style.color = color;
 
     const iframe = document.querySelector('iframe');
     const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
     const node = iframeDocument.querySelector('.sgcms-layout');
-    const placementTag = node.querySelector(`.footer-top3__e-mail`);
+    const placementTag = node.querySelector(`.${place}`);
 
     // Очистить содержимое элемента, прежде чем добавить ссылку
     placementTag.innerHTML = '';
@@ -32,15 +35,15 @@ export default function EmailCreation() {
   return (
     <div>
       <h3>Введите e-mail</h3>
-      <input
+      <Input
         type="text"
         placeholder="Enter e-mail text"
         value={emailText}
         onChange={handleTextChange}
         maxLength={15}
       />
-      <input type="text" placeholder="Enter e-mail" value={email} onChange={handleUrlChange} />
-      <button onClick={handleLinkCreation}>Create e-mail</button>
+      <Input type="text" placeholder="Enter e-mail" value={email} onChange={handleUrlChange} />
+      <Button onClick={handleLinkCreation}>Create e-mail</Button>
     </div>
   );
 }

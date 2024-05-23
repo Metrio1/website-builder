@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function ImageUploaderList({ numberOfSlide, onImageSelect, place }) {
+export default function ImageUploaderList({ numberOfSlide, onImageSelect, place, imageClass }) {
   const [selectedFile, setSelectedFile] = useState('');
 
   const handleFileChange = (event) => {
@@ -9,7 +9,7 @@ export default function ImageUploaderList({ numberOfSlide, onImageSelect, place 
 
   const handleUpload = () => {
     if (selectedFile) {
-      const fileName = `${numberOfSlide}.jpg`;
+      const fileName = `${imageClass}_${numberOfSlide}.jpg`;
 
       const formData = new FormData();
       formData.append('image', selectedFile, fileName);
@@ -37,7 +37,7 @@ export default function ImageUploaderList({ numberOfSlide, onImageSelect, place 
 
           const img = document.createElement('img');
           img.src = imageUrl;
-          img.classList.add(`image`);
+          img.classList.add(`${imageClass}`);
           imageBox.appendChild(img);
 
           iframe.srcdoc = iframeDocument.documentElement.innerHTML;

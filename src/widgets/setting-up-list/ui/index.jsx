@@ -5,6 +5,7 @@ import ImageUploader from '../../../entities/image-uploader/ui/index.jsx';
 import ImageUploaderList from '../../../entities/image-uploader-list/ui/index.jsx';
 import SetText from '../../../entities/set-text/ui/index.jsx';
 import SetButton from '../../../entities/set-button/ui/index.jsx';
+import BackButton from "../../../shared/back-button/ui/index.jsx";
 
 export default function SettingUpList({ setSidebarContent }) {
   const [numberOfSlide, setNumberOfSlide] = useState(1);
@@ -25,7 +26,8 @@ export default function SettingUpList({ setSidebarContent }) {
           key={1}
           numberOfSlide={1}
           onImageSelect={handleImageSelect}
-          place={`image-element__1`}
+          place={`list-flex__element__image__1`}
+          imageClass={`list__image`}
         />
       ),
     },
@@ -45,13 +47,13 @@ export default function SettingUpList({ setSidebarContent }) {
           lastSlide.insertAdjacentHTML(
             'afterend',
             `
-              <div class="list-element list-element__${newNumberOfSlide}">
-                <div class="image-element image-element__${newNumberOfSlide}"></div>
-                <div class="text-wrapper">
-            <div class="header-element header-element__${newNumberOfSlide}"></div>
-            <div class="text-element text-element__${newNumberOfSlide}"></div>
+              <div class="list-flex__element list-flex__element__${newNumberOfSlide}">
+                <div class="list-flex__element__image list-flex__element__image__${newNumberOfSlide}"></div>
+                <div class="list-flex__element__text-wrapper">
+            <div class="list-flex__element__text-wrapper__header-element list-flex__element__text-wrapper__header-element__${newNumberOfSlide}"></div>
+            <div class="list-flex__element__text-wrapper__text-element list-flex__element__text-wrapper__text-element__${newNumberOfSlide}"></div>
                 </div>
-                <div class="button-element button-element__${newNumberOfSlide}"></div>
+                <div class="list-flex__element__button-element list-flex__element__button-element__${newNumberOfSlide}"></div>
             </div>
             `,
           );
@@ -63,7 +65,8 @@ export default function SettingUpList({ setSidebarContent }) {
                 key={newNumberOfSlide}
                 numberOfSlide={newNumberOfSlide}
                 onImageSelect={handleImageSelect}
-                place={`image-element__${newNumberOfSlide}`}
+                place={`list-flex__element__image__${newNumberOfSlide}`}
+                imageClass={'list__image'}
               />
             ),
           };
@@ -76,13 +79,10 @@ export default function SettingUpList({ setSidebarContent }) {
     }
   };
 
-  const handleBack = () => {
-    setSidebarContent('SettingUpMain');
-  };
 
   return (
-    <div>
-      <button onClick={handleBack}>Вернуться</button>
+    <div className={'setting-up-list'}>
+      <BackButton setSidebarContent={setSidebarContent} />
       <h3>Настройка списка</h3>
       <ul>
         {imageUploaderLists.map((uploader) => (
@@ -91,11 +91,11 @@ export default function SettingUpList({ setSidebarContent }) {
             {uploader.component}
             <SetText
               maxLength={20}
-              place={`header-element__${uploader.id}`}
-              textType={'small-header'}
+              place={`list-flex__element__text-wrapper__header-element__${uploader.id}`}
+              textType={'smallest-header'}
             />
-            <SetText maxLength={600} place={`text-element__${uploader.id}`} textType={'text'} />
-            <SetButton place={`button-element__${uploader.id}`} />
+            <SetText maxLength={600} place={`list-flex__element__text-wrapper__text-element__${uploader.id}`} textType={'text'} />
+            <SetButton place={`list-flex__element__button-element__${uploader.id}`} />
           </li>
         ))}
       </ul>

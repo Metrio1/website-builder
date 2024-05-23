@@ -1,15 +1,13 @@
 import './index.scss';
 import SetText from '../../../entities/set-text/ui/index.jsx';
 import React from 'react';
+import BackButton from "../../../shared/back-button/ui/index.jsx";
 
 export default function SettingUpTextBlock({ setSidebarContent }) {
-  const handleBack = () => {
-    setSidebarContent('SettingUpMain');
-  };
 
   return (
     <div>
-      <button onClick={handleBack}>Вернуться</button>
+        <BackButton setSidebarContent={setSidebarContent}/>
       <h2>Настройка текстового блока</h2>
       <div>
         <h3>Заголовок</h3>

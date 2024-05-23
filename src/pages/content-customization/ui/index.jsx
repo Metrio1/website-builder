@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './index.scss';
+import { Button, Flex } from 'antd';
 import {
   useGetLayoutQuery,
   useGetTagQuery,
@@ -20,6 +21,8 @@ import SettingUpTextImage from '../../../widgets/setting-up-text-image/ui/index.
 import SettingUpVideo from '../../../widgets/setting-up-video/ui/index.jsx';
 import SettingUpListGrid from '../../../widgets/setting-up-list-grid/ui/index.jsx';
 import SettingUpList from '../../../widgets/setting-up-list/ui/index.jsx';
+import SettingUpSidebar2 from "../../../widgets/setting-up-sidebar-2/ui/index.jsx";
+import SettingUpFooter2 from "../../../widgets/setting-up-footer-2/ui/index.jsx";
 
 const colorSchemes = {
   colorset1: {
@@ -54,6 +57,18 @@ export default function ContentCustomization() {
 
 
   const { data } = useGetLayoutQuery(templateId, { skip: !templateId });
+
+  const handleClick = () => {
+    const iframe = document.querySelector('iframe');
+    const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+    const iframeContent = iframeDocument.documentElement.outerHTML;
+
+    const downloadLink = document.createElement('a');
+    downloadLink.href = 'data:text/html;charset=utf-8,' + encodeURIComponent(iframeContent);
+    downloadLink.download = 'iframe-content.html';
+
+    downloadLink.click();
+  };
 
   const applyColorScheme = (iframeDocument, scheme) => {
     const style = iframeDocument.createElement('style');
@@ -96,8 +111,12 @@ export default function ContentCustomization() {
         return <SettingUpHeader setSidebarContent={setSidebarContent} />;
       case 'SettingUpSidebar':
         return <SettingUpSidebar setSidebarContent={setSidebarContent} />;
+      case 'SettingUpSidebar2':
+        return <SettingUpSidebar2 setSidebarContent={setSidebarContent} />;
       case 'SettingUpFooter':
         return <SettingUpFooter setSidebarContent={setSidebarContent} />;
+      case 'SettingUpFooter2':
+        return <SettingUpFooter2 setSidebarContent={setSidebarContent} />;
       case 'SettingUpMain':
         return <SettingUpMain setSidebarContent={setSidebarContent} />;
       case 'SettingUpSlider':
@@ -125,6 +144,9 @@ export default function ContentCustomization() {
     <div className="content-customization">
       <header className="content-customization__header-container">
         <h1 className="content-customization__header-title">Настройка контента</h1>
+        <Button className={'btn-download'} onClick={handleClick}>
+          Выгрузить сайт
+        </Button>
       </header>
 
       <main className="content-customization__main">

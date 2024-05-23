@@ -12,6 +12,7 @@ import DropDownListChoice from '../../../entities/drop-down-list-choice/ui/index
 import SliderCreation from '../../../entities/slider-creation/ui/index.jsx';
 import {useDispatch, useSelector} from "react-redux";
 import { incrementBlocks } from '../model/number-of-blocks.slice.js';
+import BackButton from "../../../shared/back-button/ui/index.jsx";
 
 export default function SettingUpMain({ setSidebarContent }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,17 +20,13 @@ export default function SettingUpMain({ setSidebarContent }) {
   const numberOfBlocks = useSelector((state) => state.numberOfBlocks);
   const dispatch = useDispatch();
 
-  const handleBack = () => {
-    setSidebarContent(null);
-  };
-
   const handleCreateBlock = () => {
     dispatch(incrementBlocks());
   };
 
   return (
     <div className="dropdown">
-      <button onClick={() => handleBack()}>Вернуться</button>
+      <BackButton setSidebarContent={setSidebarContent}/>
       <ul className="dropdown-list">
         {[...Array(numberOfBlocks)].map((_, index) => (
           <li key={index}>
