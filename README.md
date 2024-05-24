@@ -1,3 +1,5 @@
+чтобы установить все зависимости в клиентской части - npm install в терминал
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
