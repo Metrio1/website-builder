@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Button, Input} from "antd";
 
 export default function ImageUploaderGallery({ numberOfSlide, onImageSelect }) {
   const [selectedFile, setSelectedFile] = useState('');
@@ -53,8 +54,8 @@ export default function ImageUploaderGallery({ numberOfSlide, onImageSelect }) {
 
   return (
     <div>
-      <input type="file" onChange={handleFileChange} />
-      <button onClick={handleUpload}>Загрузить изображение</button>
+      <Input type="file" onChange={handleFileChange} />
+      <Button onClick={handleUpload}>Загрузить изображение</Button>
     </div>
   );
 }

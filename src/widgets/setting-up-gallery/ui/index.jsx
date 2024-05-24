@@ -2,6 +2,7 @@ import './index.scss';
 import React, { useState } from 'react';
 import ImageUploaderGallery from '../../../entities/image-uploader-gallery/ui/index.jsx';
 import BackButton from "../../../shared/back-button/ui/index.jsx";
+import {Button} from "antd";
 
 export default function SettingUpGallery({ setSidebarContent }) {
   const [selectedImages, setSelectedImages] = useState({});
@@ -42,18 +43,18 @@ export default function SettingUpGallery({ setSidebarContent }) {
 
   return (
     <div className="gallery">
-      <BackButton setSidebarContent={setSidebarContent}/>
+      <BackButton setSidebarContent={setSidebarContent} way={"SettingUpMain"} />
       <h3>Настройка галлереи</h3>
       <ul>
         {ImageUploaderGallerys.map((uploader) => (
-          <li key={uploader.id}>
+          <li style={{marginTop: 30}} key={uploader.id}>
             Изображение {uploader.id}
             {uploader.component}
           </li>
         ))}
       </ul>
       {ImageUploaderGallerys.length < 12 && (
-        <button onClick={handleImages}>Добавить изображение</button>
+        <Button onClick={handleImages}>Добавить изображение</Button>
       )}
     </div>
   );

@@ -8,7 +8,7 @@ export default function SettingUpTextImage({ setSidebarContent }) {
 
   return (
     <div>
-        <BackButton setSidebarContent={setSidebarContent}/>
+        <BackButton setSidebarContent={setSidebarContent} way={"SettingUpMain"} />
       <h2>Настройка текстового блока с изображением справа</h2>
       <div>
         <h3>Основной текст</h3>

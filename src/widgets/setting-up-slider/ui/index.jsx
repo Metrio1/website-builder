@@ -3,6 +3,7 @@ import ImageUploader from '../../../entities/image-uploader/ui/index.jsx';
 import SettingsButton from '../../../shared/settings-button/ui/index.jsx';
 import DropDownListInteractiveBlock from '../../../entities/drop-down-list-interactive-block/ui/index.jsx';
 import BackButton from "../../../shared/back-button/ui/index.jsx";
+import {Button} from "antd";
 
 export default function SettingUpSlider({ setSidebarContent }) {
   const [numberOfSlide, setNumberOfSlide] = useState(2);
@@ -83,17 +84,17 @@ export default function SettingUpSlider({ setSidebarContent }) {
 
   return (
     <div>
-      <BackButton setSidebarContent={setSidebarContent} />
+      <BackButton setSidebarContent={setSidebarContent} way={"SettingUpMain"} />
       <h3>Настройка слайдера</h3>
       <ul>
         {imageUploaders.map((uploader, index) => (
-          <li key={uploader.id}>
+          <li style={{marginTop: 30}} key={uploader.id}>
             Слайд {uploader.id}
             {uploader.component}
             <div className="interactive-block">
-              <button onClick={() => handleInteractiveBlock(uploader.id)}>
+              <Button onClick={() => handleInteractiveBlock(uploader.id)}>
                 Добавить интерактивный блок на слайд
-              </button>
+              </Button>
               {interactiveBlockId === uploader.id && (
                 <DropDownListInteractiveBlock index={uploader.id} />
               )}
@@ -101,7 +102,7 @@ export default function SettingUpSlider({ setSidebarContent }) {
           </li>
         ))}
       </ul>
-      {imageUploaders.length < 5 && <button onClick={handleSlides}>Добавить слайд</button>}
+      {imageUploaders.length < 5 && <Button onClick={handleSlides}>Добавить слайд</Button>}
     </div>
   );
 }

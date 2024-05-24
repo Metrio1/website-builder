@@ -7,7 +7,7 @@ export default function SettingUpTextBlock({ setSidebarContent }) {
 
   return (
     <div>
-        <BackButton setSidebarContent={setSidebarContent}/>
+        <BackButton setSidebarContent={setSidebarContent} way={"SettingUpMain"} />
       <h2>Настройка текстового блока</h2>
       <div>
         <h3>Заголовок</h3>

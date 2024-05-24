@@ -1,5 +1,6 @@
 import './index.scss';
 import { useNavigate } from 'react-router-dom';
+import {Button} from "antd";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -12,9 +13,9 @@ export default function Home() {
     <div className="home">
       <h1 className="home__title">Добро пожаловать в конструктор сайтов!</h1>
       <main className="home__main-container">
-        <button className="home__main-container__create-button" onClick={() => handleSelection()}>
+        <Button type="primary" size={'large'} onClick={() => handleSelection()}>
           Создать сайт
-        </button>
+        </Button>
       </main>
     </div>
   );

@@ -7,7 +7,7 @@ export default function SettingUpVideo({ setSidebarContent }) {
 
   return (
     <div>
-        <BackButton setSidebarContent={setSidebarContent}/>
+        <BackButton setSidebarContent={setSidebarContent} way={"SettingUpMain"}/>
         <h2>Настройка видео</h2>
       <VideoUploader />
     </div>

@@ -1,5 +1,6 @@
 import './index.scss';
 import { useState } from 'react';
+import {Button, Input} from "antd";
 
 export default function SetButton({ place }) {
   const [inputText, setInputText] = useState('');
@@ -56,13 +57,13 @@ export default function SetButton({ place }) {
 
   return (
       <div>
-        <button className="dropdown-button" onClick={toggleDropdown}>
+        <Button className="dropdown-button" onClick={toggleDropdown}>
           Добавить кнопку
-        </button>
+        </Button>
         {isOpen && (
             <div className="input-container">
               <h3>Введите текст для кнопки</h3>
-              <textarea value={inputText} onChange={handleInputChange} maxLength={20} />
+              <Input value={inputText} onChange={handleInputChange} maxLength={20} />
               <h3>Введите ссылку для кнопки</h3>
               <input
                   type="text"

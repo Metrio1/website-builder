@@ -1,6 +1,7 @@
 import './index.scss';
 import { Button, Flex } from 'antd';
 import { Input } from 'antd';
+import { Select, Space } from 'antd';
 import { useState } from 'react';
 
 const icons = {
@@ -28,66 +29,66 @@ const icons = {
 };
 
 export default function SocialMediaCreation() {
-  const [buttonLink, setButtonLink] = useState('');
-  const [selectedIcon, setSelectedIcon] = useState('facebook');
-  const [linkCount, setLinkCount] = useState(0);
-  const maxLinks = 5;
+    const [buttonLink, setButtonLink] = useState('');
+    const [selectedIcon, setSelectedIcon] = useState('facebook');
+    const [linkCount, setLinkCount] = useState(0);
+    const maxLinks = 5;
 
-  const handleUrlChange = (event) => {
-    setButtonLink(event.target.value);
-  };
+    const handleUrlChange = (event) => {
+        setButtonLink(event.target.value);
+    };
 
-  const handleIconChange = (event) => {
-    setSelectedIcon(event.target.value);
-  };
+    const handleIconChange = (value) => {
+        setSelectedIcon(value);
+    };
 
-  const handleButtonCreation = () => {
-    if (linkCount >= maxLinks) {
-      alert(`Максимальное количество ссылок (${maxLinks}) достигнуто!`);
-      return;
-    }
+    const handleButtonCreation = () => {
+        if (linkCount >= maxLinks) {
+            alert(`Максимальное количество ссылок (${maxLinks}) достигнуто!`);
+            return;
+        }
 
-    const button = document.createElement('a');
-    button.href = buttonLink || '_blank';
-    button.target = '_blank';
-    button.className = 'round-button';
-    button.innerHTML = icons[selectedIcon];
+        const button = document.createElement('a');
+        button.href = buttonLink || '_blank';
+        button.target = '_blank';
+        button.className = 'round-button';
+        button.innerHTML = icons[selectedIcon];
 
-    // button.addEventListener('click', () => {
-    //   window.open(buttonLink, '_blank');
-    // });
+        const iframe = document.querySelector('iframe');
+        const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+        const node = iframeDocument.querySelector('.sgcms-layout');
+        const placementTag = node.querySelector('.footer-bottom__social-media');
 
-    const iframe = document.querySelector('iframe');
-    const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-    const node = iframeDocument.querySelector('.sgcms-layout');
-    const placementTag = node.querySelector('.footer-bottom__social-media');
+        placementTag.appendChild(button);
 
-    placementTag.appendChild(button);
+        setLinkCount(linkCount + 1);
+    };
 
-    setLinkCount(linkCount + 1);
-  };
-
-  return (
-    <div>
-      <h3>Добавить кнопку</h3>
-      <Input
-        type="text"
-        placeholder="Введите URL для кнопки (необязательно)"
-        value={buttonLink}
-        onChange={handleUrlChange}
-      />
-      <h4>Выберите иконку</h4>
-      <select value={selectedIcon} onChange={handleIconChange}>
-        <option value="facebook">Facebook</option>
-        <option value="twitter">Twitter</option>
-        <option value="instagram">Instagram</option>
-        <option value="youtube">Youtube</option>
-        <option value="whatsapp">Whats app</option>
-        <option value="tiktok">Tiktok</option>
-        <option value="vk">VK</option>
-      </select>
-
-      <Button onClick={handleButtonCreation}>Создать кнопку</Button>
-    </div>
-  );
+    return (
+        <div>
+            <h3>Добавить кнопку</h3>
+            <Input
+                type="text"
+                placeholder="Введите URL для кнопки (необязательно)"
+                value={buttonLink}
+                onChange={handleUrlChange}
+            />
+            <h4>Выберите иконку</h4>
+            <Select
+                defaultValue="facebook"
+                style={{ width: 120 }}
+                onChange={handleIconChange}
+                options={[
+                    { value: 'facebook', label: 'Facebook' },
+                    { value: 'twitter', label: 'Twitter' },
+                    { value: 'instagram', label: 'Instagram' },
+                    { value: 'youtube', label: 'Youtube' },
+                    { value: 'whatsapp', label: 'WhatsApp' },
+                    { value: 'tiktok', label: 'TikTok' },
+                    { value: 'vk', label: 'VK' },
+                ]}
+            />
+            <Button onClick={handleButtonCreation}>Создать кнопку</Button>
+        </div>
+    );
 }

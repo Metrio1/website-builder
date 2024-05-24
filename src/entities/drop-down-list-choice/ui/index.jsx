@@ -11,6 +11,7 @@ import SettingsButton from '../../../shared/settings-button/ui/index.jsx';
 import { handleGetMain } from '../../../shared/handle-get-main/index.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSelectedOption } from '../../../widgets/setting-up-main/model/selected-option.slice.js';
+import {Button} from "antd";
 
 export default function DropDownListChoice({ index, setSidebarContent }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -80,9 +81,9 @@ export default function DropDownListChoice({ index, setSidebarContent }) {
 
   return (
     <div className="dropdown">
-      <button className="dropdown-choice" onClick={toggleDropdown}>
+      <Button className="dropdown-choice" onClick={toggleDropdown}>
         {selectedOption || 'Выберите вариант'}
-      </button>
+      </Button>
       {isOpen && (
         <ul className="dropdown-list">
           <li className="dropdown-element" onClick={() => selectOption('Слайдер')}>

@@ -13,6 +13,7 @@ import SliderCreation from '../../../entities/slider-creation/ui/index.jsx';
 import {useDispatch, useSelector} from "react-redux";
 import { incrementBlocks } from '../model/number-of-blocks.slice.js';
 import BackButton from "../../../shared/back-button/ui/index.jsx";
+import {Button} from "antd";
 
 export default function SettingUpMain({ setSidebarContent }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,7 +36,7 @@ export default function SettingUpMain({ setSidebarContent }) {
         ))}
         {numberOfBlocks < 7 && (
           <li>
-            <button onClick={handleCreateBlock}>Добавить блок с контентом</button>
+            <Button onClick={handleCreateBlock}>Добавить блок с контентом</Button>
           </li>
         )}
       </ul>

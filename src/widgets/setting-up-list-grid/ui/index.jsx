@@ -6,6 +6,7 @@ import ImageUploaderList from '../../../entities/image-uploader-list/ui/index.js
 import SetText from "../../../entities/set-text/ui/index.jsx";
 import SetButton from "../../../entities/set-button/ui/index.jsx";
 import BackButton from "../../../shared/back-button/ui/index.jsx";
+import {Button} from "antd";
 
 export default function SettingUpListGrid({ setSidebarContent }) {
   const [numberOfSlide, setNumberOfSlide] = useState(1);
@@ -79,11 +80,11 @@ export default function SettingUpListGrid({ setSidebarContent }) {
 
   return (
     <div className={'setting-up-list-grid'}>
-      <BackButton setSidebarContent={setSidebarContent} />
+      <BackButton setSidebarContent={setSidebarContent} way={"SettingUpMain"} />
       <h3>Настройка списка</h3>
       <ul>
         {imageUploaderLists.map((uploader) => (
-          <li key={uploader.id}>
+          <li style={{marginTop: 30}} key={uploader.id}>
             Блок {uploader.id}
             {uploader.component}
             <SetText maxLength={20} place={`header-element__${uploader.id}`} textType={'small-header'} />
@@ -92,7 +93,7 @@ export default function SettingUpListGrid({ setSidebarContent }) {
           </li>
         ))}
       </ul>
-      {imageUploaderLists.length < 12 && <button onClick={handleSlides}>Добавить блок</button>}
+      {imageUploaderLists.length < 12 && <Button onClick={handleSlides}>Добавить блок</Button>}
     </div>
   );
 }

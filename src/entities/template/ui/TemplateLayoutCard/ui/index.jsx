@@ -4,6 +4,7 @@ import { setTemplateId } from '../../../model/template.slice.js';
 import { navigate } from 'jsdom/lib/jsdom/living/window/navigation.js';
 import { useNavigate } from 'react-router-dom';
 import { useLazyGetLayoutQuery } from '../../../../layout-pages/api/api.js';
+import {Button} from "antd";
 
 export default function TemplateLayoutCard({ image, description, layoutNumber }) {
   const [getLayout, getLayoutState] = useLazyGetLayoutQuery();
@@ -23,9 +24,9 @@ export default function TemplateLayoutCard({ image, description, layoutNumber })
       <img className="basic__layout" src={image} width="480" height="270" />
       <div className="basic__description">
         <h3>{description}</h3>
-        <button className="basic__button" onClick={handleSelection}>
+        <Button type="primary" className="basic__button" onClick={handleSelection}>
           Выбрать
-        </button>
+        </Button>
       </div>
     </div>
   );

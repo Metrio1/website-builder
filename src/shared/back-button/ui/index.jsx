@@ -2,16 +2,16 @@ import './index.scss';
 import { Button, Flex } from 'antd';
 import React from 'react';
 
-export default function BackButton({ setSidebarContent }) {
+export default function BackButton({ setSidebarContent, way }) {
     const handleClick = () => {
-        setSidebarContent(null);
+        setSidebarContent(way);
     };
 
     return (
 
         <Button
 
-            onClick={() => handleClick()}
+            onClick={handleClick}
         >
             Вернуться
         </Button>

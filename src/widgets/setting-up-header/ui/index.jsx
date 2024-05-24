@@ -36,7 +36,7 @@ export default function SettingUpHeader({ setSidebarContent }) {
   return (
     <div className="setting-up-header">
       <h2>Настройка хедера</h2>
-      <BackButton setSidebarContent={setSidebarContent}/>
+      <BackButton setSidebarContent={setSidebarContent} />
       <DropDownListLogo />
       {/*<DropDownListChoice />*/}
       <DropDownListMenu typesOfLinks={'menu__link'} maximumNumberOfLinks={5} />

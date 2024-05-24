@@ -1,5 +1,6 @@
 import './index.scss';
 import { useState } from 'react';
+import { Button, Flex } from 'antd';
 import SetLogoImage from '../../set-logo-image/ui/index.jsx';
 import SetText from '../../set-text/ui/index.jsx';
 
@@ -13,9 +14,9 @@ export default function DropDownListLogo() {
   return (
     <div className="dropdown">
       <h1></h1>
-      <button className="dropdown-button" onClick={toggleDropdown}>
+      <Button className="dropdown-button" onClick={toggleDropdown}>
         Логотип
-      </button>
+      </Button>
       {isOpen && (
         <ul className="dropdown-list">
           <div>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {Button, Input} from "antd";
 
 function VideoUploader() {
 
@@ -67,8 +68,8 @@ function VideoUploader() {
   return (
     <div>
       <h3>Загрузка видео</h3>
-      <input type="file" accept="video/*" onChange={handleFileChange} />
-      <button onClick={handleUpload}>Загрузить видео</button>
+      <Input type="file" accept="video/*" onChange={handleFileChange} />
+      <Button onClick={handleUpload}>Загрузить видео</Button>
       <div className="main__container"></div>
     </div>
   );

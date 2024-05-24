@@ -1,6 +1,7 @@
 import './index.scss';
 import TemplateLayoutCard from '../../../entities/template/ui/TemplateLayoutCard/ui/index.jsx';
 import { useNavigate } from 'react-router-dom';
+import {Button} from "antd";
 
 export default function Basic() {
 
@@ -14,9 +15,9 @@ export default function Basic() {
     <div className="basic">
       <header>
         <div className="basic__header">
-          <button className="color-spectrum__header__back-button" onClick={() => handleSelection()}>
+          <Button className="color-spectrum__header__back-button" onClick={() => handleSelection()}>
             Вернуться назад
-          </button>
+          </Button>
         </div>
       </header>
       <main>

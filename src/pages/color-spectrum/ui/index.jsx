@@ -7,6 +7,7 @@ import { resetSelectedTags } from '../../../entities/tag/model/tag.slice.js';
 import { clearLogoImage } from '../../../entities/set-logo-image/model/logoImage.slice.js';
 import {clearAllSelectedOptions} from "../../../widgets/setting-up-main/model/selected-option.slice.js";
 import {clearBlocks} from "../../../widgets/setting-up-main/model/number-of-blocks.slice.js";
+import {Button} from "antd";
 
 export default function ColorSpectrum() {
   const dispatch = useDispatch();
@@ -28,9 +29,9 @@ export default function ColorSpectrum() {
     <div className="color-spectrum">
       <header>
         <div className="color-spectrum__header">
-          <button className="color-spectrum__header__back-button" onClick={() => handleSelection()}>
+          <Button className="color-spectrum__header__back-button" onClick={() => handleSelection()}>
             Вернуться назад
-          </button>
+          </Button>
         </div>
       </header>
       <main>
