@@ -83,15 +83,20 @@ html, body, #root{
 
             &__choose-block {
 
+              margin: 15px;
+
               &__title {
                 color: #424242;
               }
 
               //&__btn-tag {
-              //  width: 200px;
+              //  font-size: 16px;
+              //  height: 40px;
+              //  width: 150px;
               //}
-              //&__btn-settings {
-              //  width: 100px;
+              //&__btn-set {
+              //  width: 50px;
+              //  height: 40px;
               //}
             }
           }

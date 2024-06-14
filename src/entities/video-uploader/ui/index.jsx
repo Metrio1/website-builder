@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import {Button, Input} from "antd";
+import { Button, Input } from 'antd';
 
 function VideoUploader() {
-
   const [selectedFile, setSelectedFile] = useState(null);
   const [videoUrl, setVideoUrl] = useState('');
 
@@ -10,15 +9,13 @@ function VideoUploader() {
     setSelectedFile(event.target.files[0]);
   };
 
-
-
   const handleUpload = async () => {
     if (!selectedFile) {
       alert('Пожалуйста, выберите файл для загрузки.');
       return;
     }
 
-      const fileName = 'video.MP4';
+    const fileName = 'video.MP4';
 
     const formData = new FormData();
     formData.append('video', selectedFile, fileName);
@@ -51,7 +48,7 @@ function VideoUploader() {
       const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
       const mainContainer = iframeDocument.querySelector('.main__container');
       const videoElement = document.createElement('video');
-        videoElement.style.maxHeight = '400px';
+      videoElement.style.maxHeight = '400px';
       videoElement.controls = true;
 
       const sourceElement = document.createElement('source');
@@ -66,10 +63,12 @@ function VideoUploader() {
   }, [videoUrl]);
 
   return (
-    <div>
+    <div className="setting-up-container">
       <h3>Загрузка видео</h3>
-      <Input type="file" accept="video/*" onChange={handleFileChange} />
-      <Button onClick={handleUpload}>Загрузить видео</Button>
+      <div>
+        <Input type="file" accept="video/*" onChange={handleFileChange} />
+        <Button onClick={handleUpload}>Загрузить видео</Button>
+      </div>
       <div className="main__container"></div>
     </div>
   );

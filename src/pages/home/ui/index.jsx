@@ -7,7 +7,6 @@ export default function Home() {
 
   const handleSelection = (layoutType) => {
     navigate('/basic');
-    // console.log(initialState);
   };
   return (
     <div className="home">

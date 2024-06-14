@@ -3,7 +3,7 @@ import { Button, Flex } from 'antd';
 import { Input } from 'antd';
 import { useState } from 'react';
 
-export default function EmailCreation({place, color}) {
+export default function EmailCreation({ place, color }) {
   const [emailText, setEmailText] = useState('');
   const [email, setEmail] = useState('');
 
@@ -33,7 +33,7 @@ export default function EmailCreation({place, color}) {
   };
 
   return (
-    <div>
+    <div className="dropdown-list">
       <h3>Введите e-mail</h3>
       <Input
         type="text"
@@ -43,7 +43,9 @@ export default function EmailCreation({place, color}) {
         maxLength={15}
       />
       <Input type="text" placeholder="Enter e-mail" value={email} onChange={handleUrlChange} />
-      <Button onClick={handleLinkCreation}>Create e-mail</Button>
+      <Button className="dropdown-list__add-e-mail" onClick={handleLinkCreation}>
+        Создать e-mail
+      </Button>
     </div>
   );
 }

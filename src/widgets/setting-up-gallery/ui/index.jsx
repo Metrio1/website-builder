@@ -1,8 +1,8 @@
 import './index.scss';
 import React, { useState } from 'react';
 import ImageUploaderGallery from '../../../entities/image-uploader-gallery/ui/index.jsx';
-import BackButton from "../../../shared/back-button/ui/index.jsx";
-import {Button} from "antd";
+import BackButton from '../../../shared/back-button/ui/index.jsx';
+import { Button } from 'antd';
 
 export default function SettingUpGallery({ setSidebarContent }) {
   const [selectedImages, setSelectedImages] = useState({});
@@ -40,22 +40,21 @@ export default function SettingUpGallery({ setSidebarContent }) {
     }
   };
 
-
   return (
     <div className="gallery">
-      <BackButton setSidebarContent={setSidebarContent} way={"SettingUpMain"} />
+      <BackButton setSidebarContent={setSidebarContent} way={'SettingUpMain'} />
       <h3>Настройка галлереи</h3>
-      <ul>
+      <div className="setting-up-container">
         {ImageUploaderGallerys.map((uploader) => (
-          <li style={{marginTop: 30}} key={uploader.id}>
+          <div className="setting-up-container__element" key={uploader.id}>
             Изображение {uploader.id}
             {uploader.component}
-          </li>
+          </div>
         ))}
-      </ul>
-      {ImageUploaderGallerys.length < 12 && (
-        <Button onClick={handleImages}>Добавить изображение</Button>
-      )}
+        {ImageUploaderGallerys.length < 12 && (
+          <Button onClick={handleImages}>Добавить изображение</Button>
+        )}
+      </div>
     </div>
   );
 }

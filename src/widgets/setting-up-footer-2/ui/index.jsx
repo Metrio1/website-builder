@@ -5,10 +5,10 @@ import DropDownListPhone from '../../../entities/drop-down-list-phone/ui/index.j
 import DropDownListEmail from '../../../entities/drop-down-list-email/ui/index.jsx';
 import DropDownListSocialMedia from '../../../entities/drop-down-social-media/ui/index.jsx';
 import { useEffect } from 'react';
-import BackButton from "../../../shared/back-button/ui/index.jsx";
+import BackButton from '../../../shared/back-button/ui/index.jsx';
+import SettingUpTop from '../../../entities/setting-up-top/ui/index.jsx';
 
 export default function SettingUpFooter2({ setSidebarContent }) {
-
   useEffect(() => {
     const iframe = document.querySelector('iframe');
 
@@ -36,9 +36,14 @@ export default function SettingUpFooter2({ setSidebarContent }) {
 
   return (
     <div className="setting-up-footer">
-      <h2>Настройка футера</h2>
-        <BackButton setSidebarContent={setSidebarContent}/>
-      <DropDownListText />
+      <SettingUpTop headerText={'Настройка подвала'} setSidebarContent={setSidebarContent} />
+      <DropDownListText
+        name={'Текст'}
+        maxLength={300}
+        place={'footer-top1'}
+        color={'white'}
+        font={'Arial'}
+      />
       <DropDownListMenu typesOfLinks={'footer-top2__link'} maximumNumberOfLinks={5} />
       <DropDownListMenu typesOfLinks={'footer-top3__link'} maximumNumberOfLinks={5} />
       <DropDownListPhone place={'footer-bottom__contacts__phone'} color={'white'} />

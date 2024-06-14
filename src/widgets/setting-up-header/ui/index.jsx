@@ -4,10 +4,10 @@ import DropDownListLogo from '../../../entities/drop-down-list-logo/ui/index.jsx
 import DropDownListMenu from '../../../entities/drop-down-list-menu/ui/index.jsx';
 import DropDownListPhone from '../../../entities/drop-down-list-phone/ui/index.jsx';
 import { useEffect } from 'react';
-import BackButton from "../../../shared/back-button/ui/index.jsx";
+import BackButton from '../../../shared/back-button/ui/index.jsx';
+import SettingUpTop from '../../../entities/setting-up-top/ui/index.jsx';
 
 export default function SettingUpHeader({ setSidebarContent }) {
-
   useEffect(() => {
     const iframe = document.querySelector('iframe');
 
@@ -35,10 +35,8 @@ export default function SettingUpHeader({ setSidebarContent }) {
 
   return (
     <div className="setting-up-header">
-      <h2>Настройка хедера</h2>
-      <BackButton setSidebarContent={setSidebarContent} />
+      <SettingUpTop headerText={'Настройка шапки'} setSidebarContent={setSidebarContent} />
       <DropDownListLogo />
-      {/*<DropDownListChoice />*/}
       <DropDownListMenu typesOfLinks={'menu__link'} maximumNumberOfLinks={5} />
       <DropDownListPhone place={'phone'} color={'white'} />
     </div>

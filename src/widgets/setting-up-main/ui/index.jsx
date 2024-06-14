@@ -10,12 +10,14 @@ import React, { useState } from 'react';
 import LinkCreation from '../../../entities/link-creation/ui/index.jsx';
 import DropDownListChoice from '../../../entities/drop-down-list-choice/ui/index.jsx';
 import SliderCreation from '../../../entities/slider-creation/ui/index.jsx';
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from 'react-redux';
 import { incrementBlocks } from '../model/number-of-blocks.slice.js';
-import BackButton from "../../../shared/back-button/ui/index.jsx";
-import {Button} from "antd";
+import BackButton from '../../../shared/back-button/ui/index.jsx';
+import { Button } from 'antd';
+import SettingUpTop from '../../../entities/setting-up-top/ui/index.jsx';
 
 export default function SettingUpMain({ setSidebarContent }) {
+  const [size, setSize] = useState('large');
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('');
   const numberOfBlocks = useSelector((state) => state.numberOfBlocks);
@@ -27,20 +29,19 @@ export default function SettingUpMain({ setSidebarContent }) {
 
   return (
     <div className="dropdown">
-      <BackButton setSidebarContent={setSidebarContent}/>
-      <ul className="dropdown-list">
+      <SettingUpTop headerText={'Добавление контента'} setSidebarContent={setSidebarContent} />
+      <div className="dropdown-list">
         {[...Array(numberOfBlocks)].map((_, index) => (
-          <li key={index}>
+          <div key={index}>
             <DropDownListChoice index={index} setSidebarContent={setSidebarContent} />
-          </li>
+          </div>
         ))}
         {numberOfBlocks < 7 && (
-          <li>
-            <Button onClick={handleCreateBlock}>Добавить блок с контентом</Button>
-          </li>
+          <Button size={size} onClick={handleCreateBlock}>
+            Добавить блок с контентом
+          </Button>
         )}
-      </ul>
+      </div>
     </div>
   );
-
 }

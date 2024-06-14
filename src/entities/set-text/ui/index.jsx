@@ -36,11 +36,10 @@ export default function SetText({ maxLength, place, textType, color, font }) {
   };
 
   return (
-    <div>
+    <div className="set-text">
       <h4>Введите текст</h4>
       {/*<Input value={inputText} onChange={handleInputChange} maxLength={maxLength} />*/}
       <TextArea
-
         showCount
         maxLength={maxLength}
         onChange={handleInputChange}
@@ -48,6 +47,7 @@ export default function SetText({ maxLength, place, textType, color, font }) {
         style={{
           height: 120,
           resize: 'none',
+          paddingBottom: 10,
         }}
       />
     </div>

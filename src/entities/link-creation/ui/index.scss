@@ -1,3 +1,13 @@
 .link-creation {
+  display: flex;
+  flex-flow: column wrap;
+  align-content: space-evenly;
+}
+
+.link-creation > * {
+  margin-top: 5px;
+}
+
+.link-creation__header {
   color: #4c4c4c;
 }

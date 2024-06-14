@@ -5,6 +5,7 @@ import SetLogoImage from '../../set-logo-image/ui/index.jsx';
 import SetText from '../../set-text/ui/index.jsx';
 
 export default function DropDownListLogo() {
+  const [size, setSize] = useState('large');
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -14,13 +15,19 @@ export default function DropDownListLogo() {
   return (
     <div className="dropdown">
       <h1></h1>
-      <Button className="dropdown-button" onClick={toggleDropdown}>
+      <Button size={size} className="dropdown-button" onClick={toggleDropdown}>
         Логотип
       </Button>
       {isOpen && (
         <ul className="dropdown-list">
           <div>
-            <SetText maxLength={20} place={'logo-text'} textType={'small-header'} color={'white'} font={'Arial'} />
+            <SetText
+              maxLength={20}
+              place={'logo-text'}
+              textType={'small-header'}
+              color={'white'}
+              font={'Arial'}
+            />
           </div>
           <SetLogoImage />
         </ul>

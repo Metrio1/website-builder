@@ -11,10 +11,12 @@ import SettingsButton from '../../../shared/settings-button/ui/index.jsx';
 import { handleGetMain } from '../../../shared/handle-get-main/index.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSelectedOption } from '../../../widgets/setting-up-main/model/selected-option.slice.js';
-import {Button} from "antd";
+import { Button, Select } from 'antd';
+
+const { Option } = Select;
 
 export default function DropDownListChoice({ index, setSidebarContent }) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [size, setSize] = useState('large');
   const selectedOption = useSelector((state) => state.selectedOption[index]);
   const dispatch = useDispatch();
 
@@ -22,10 +24,6 @@ export default function DropDownListChoice({ index, setSidebarContent }) {
   const [getMain, getMainState] = useLazyGetMainQuery();
   const [getJavaScript, getJavaScriptState] = useLazyGetJavaScriptQuery();
   const [getCss, getCssState] = useLazyGetCssQuery();
-
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
 
   const createBlock = async () => {
     console.log(index);
@@ -41,7 +39,6 @@ export default function DropDownListChoice({ index, setSidebarContent }) {
 
   const selectOption = async (option) => {
     dispatch(setSelectedOption({ index, option }));
-    setIsOpen(false);
     if (option === 'Слайдер') {
       await createBlock();
       await handleGetMain(
@@ -80,41 +77,21 @@ export default function DropDownListChoice({ index, setSidebarContent }) {
   };
 
   return (
-    <div className="dropdown">
-      <Button className="dropdown-choice" onClick={toggleDropdown}>
-        {selectedOption || 'Выберите вариант'}
-      </Button>
-      {isOpen && (
-        <ul className="dropdown-list">
-          <li className="dropdown-element" onClick={() => selectOption('Слайдер')}>
-            Слайдер
-          </li>
-          <li className="dropdown-element" onClick={() => selectOption('Галлерея')}>
-            Галлерея
-          </li>
-          <li className="dropdown-element" onClick={() => selectOption('Текстовый блок')}>
-            Текстовый блок
-          </li>
-          <li
-            className="dropdown-element"
-            onClick={() => selectOption('Изображение + текстовый блок')}
-          >
-            Изображение + текстовый блок
-          </li>
-          <li className="dropdown-element" onClick={() => selectOption('Видео')}>
-            Видео
-          </li>
-          <li
-            className="dropdown-element"
-            onClick={() => selectOption('Список элементов в виде сетки')}
-          >
-            Список элементов в виде сетки
-          </li>
-          <li className="dropdown-element" onClick={() => selectOption('Список элементов')}>
-            Список элементов
-          </li>
-        </ul>
-      )}
+    <div className="dropdown-list-choice">
+      <Select
+        size={size}
+        value={selectedOption || 'Выберите вариант'}
+        onChange={selectOption}
+        className="dropdown-list-choice__choice"
+      >
+        <Option value="Слайдер">Слайдер</Option>
+        <Option value="Галлерея">Галлерея</Option>
+        <Option value="Текстовый блок">Текстовый блок</Option>
+        <Option value="Изображение + текстовый блок">Изображение + текстовый блок</Option>
+        <Option value="Видео">Видео</Option>
+        <Option value="Список элементов в виде сетки">Список элементов в виде сетки</Option>
+        <Option value="Список элементов">Список элементов</Option>
+      </Select>
       {selectedOption === 'Слайдер' && (
         <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpSlider'} />
       )}

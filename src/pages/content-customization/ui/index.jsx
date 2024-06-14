@@ -21,8 +21,8 @@ import SettingUpTextImage from '../../../widgets/setting-up-text-image/ui/index.
 import SettingUpVideo from '../../../widgets/setting-up-video/ui/index.jsx';
 import SettingUpListGrid from '../../../widgets/setting-up-list-grid/ui/index.jsx';
 import SettingUpList from '../../../widgets/setting-up-list/ui/index.jsx';
-import SettingUpSidebar2 from "../../../widgets/setting-up-sidebar-2/ui/index.jsx";
-import SettingUpFooter2 from "../../../widgets/setting-up-footer-2/ui/index.jsx";
+import SettingUpSidebar2 from '../../../widgets/setting-up-sidebar-2/ui/index.jsx';
+import SettingUpFooter2 from '../../../widgets/setting-up-footer-2/ui/index.jsx';
 
 const colorSchemes = {
   colorset1: {
@@ -48,13 +48,11 @@ const colorSchemes = {
   },
 };
 
-
 export default function ContentCustomization() {
   const templateId = useSelector((state) => state.templateSlice.websiteTemplate);
   const colorsetId = useSelector((state) => state.templateSlice.websiteColorset);
 
   const [sidebarContent, setSidebarContent] = useState('SettingUpTags');
-
 
   const { data } = useGetLayoutQuery(templateId, { skip: !templateId });
 
@@ -148,7 +146,6 @@ export default function ContentCustomization() {
           Выгрузить сайт
         </Button>
       </header>
-
       <main className="content-customization__main">
         <aside className="content-customization__main__sidebar-container">
           <div className="content-customization__main__sidebar-container__list-container">

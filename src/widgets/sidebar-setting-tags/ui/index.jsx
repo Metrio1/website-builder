@@ -12,6 +12,7 @@ import {
 import { useSelector } from 'react-redux';
 
 export default function SidebarSettingTags({ setSidebarContent }) {
+  const [size, setSize] = useState('large');
   const selectedHeader = useSelector((state) => state.tagSlice.selectedHeader);
   const selectedSidebar = useSelector((state) => state.tagSlice.selectedSidebar);
   const selectedFooter = useSelector((state) => state.tagSlice.selectedFooter);
@@ -54,16 +55,17 @@ export default function SidebarSettingTags({ setSidebarContent }) {
 
   return (
     <div className="content-customization__main__sidebar-container__list-container__wrapper">
-      <div className="content-customization__main__sidebar-container__list-container__wrapper__header-choose">
+      <div className="content-customization__main__sidebar-container__list-container__wrapper__choose-block">
         <h3 className="content-customization__main__sidebar-container__list-container__wrapper__choose-block__title">
-          Выбор хедера
+          Выбор шапки
         </h3>
         <div>
           <Button
-            className="content-customization__main__sidebar-container__list-container__wrapper__choose-block__h1__btn-tag"
+            size={size}
+            className="content-customization__main__sidebar-container__list-container__wrapper__choose-block__btn-tag"
             onClick={() => handleClick('h1', headerPlace)}
           >
-            Хедер №1
+            Шапка №1
           </Button>
           {selectedHeader === 'h1' && (
             <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpHeader'} />
@@ -72,27 +74,33 @@ export default function SidebarSettingTags({ setSidebarContent }) {
 
         <div>
           <Button
+            size={size}
             className="content-customization__main__sidebar-container__list-container__wrapper__choose-block__btn-tag"
             onClick={() => handleClick('h2', headerPlace)}
           >
-            Хедер №2
+            Шапка №2
           </Button>
           {selectedHeader === 'h2' && (
-            <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpHeader'} />
+            <SettingsButton
+              className="content-customization__main__sidebar-container__list-container__wrapper__choose-block__btn-tag"
+              setSidebarContent={setSidebarContent}
+              tagType={'SettingUpHeader'}
+            />
           )}
         </div>
       </div>
       {templateId !== '2' && (
-        <div className="content-customization__main__sidebar-container__list-container__wrapper__header-choose">
+        <div className="content-customization__main__sidebar-container__list-container__wrapper__choose-block">
           <h3 className="content-customization__main__sidebar-container__list-container__wrapper__choose-block__title">
-            Выбор сайдбара
+            Выбор меню
           </h3>
           <div>
             <Button
+              size={size}
               className="content-customization__main__sidebar-container__list-container__wrapper__choose-block__btn-tag"
               onClick={() => handleClick('s1', sidebarPlace)}
             >
-              Сайдбар №1
+              Меню №1
             </Button>
             {selectedSidebar === 's1' && (
               <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpSidebar'} />
@@ -100,10 +108,11 @@ export default function SidebarSettingTags({ setSidebarContent }) {
           </div>
           <div>
             <Button
+              size={size}
               className="content-customization__main__sidebar-container__list-container__wrapper__choose-block__btn-tag"
               onClick={() => handleClick('s2', sidebarPlace)}
             >
-              Сайдбар №2
+              Меню №2
             </Button>
             {selectedSidebar === 's2' && (
               <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpSidebar2'} />
@@ -123,16 +132,17 @@ export default function SidebarSettingTags({ setSidebarContent }) {
       {/*    <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpSidebar'} />*/}
       {/*  )}*/}
       {/*</div>*/}
-      <div className="content-customization__main__sidebar-container__list-container__wrapper__header-choose">
+      <div className="content-customization__main__sidebar-container__list-container__wrapper__choose-block">
         <h3 className="content-customization__main__sidebar-container__list-container__wrapper__choose-block__title">
-          Выбор футера
+          Выбор подвала
         </h3>
         <div>
           <Button
+            size={size}
             className="content-customization__main__sidebar-container__list-container__wrapper__choose-block__btn-tag"
             onClick={() => handleClick('f1', footerPlace)}
           >
-            Футер №1
+            Подвал №1
           </Button>
           {selectedFooter === 'f1' && (
             <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpFooter'} />
@@ -140,17 +150,18 @@ export default function SidebarSettingTags({ setSidebarContent }) {
         </div>
         <div>
           <Button
+            size={size}
             className="content-customization__main__sidebar-container__list-container__wrapper__choose-block__btn-tag"
             onClick={() => handleClick('f2', footerPlace)}
           >
-            Футер №2
+            Подвал №2
           </Button>
           {selectedFooter === 'f2' && (
             <SettingsButton setSidebarContent={setSidebarContent} tagType={'SettingUpFooter2'} />
           )}
         </div>
       </div>
-      <div className="content-customization__main__sidebar-container__list-container__wrapper__setting-main-content">
+      <div className="content-customization__main__sidebar-container__list-container__wrapper__choose-block">
         <h3 className="content-customization__main__sidebar-container__list-container__wrapper__choose-block__title">
           Основной контент
         </h3>

@@ -1,0 +1,12 @@
+.setting-up-top {
+  padding: 5px;
+  display: flex;
+  //justify-content: space-between;
+
+  &__header {
+    display: flex;
+    align-self: flex-end;
+    padding-left: 4%;
+    padding-bottom: 8px;
+  }
+}

@@ -2,9 +2,14 @@
   width: 100%;
 }
 
+.dropdown-list > * {
+  margin-top: 5px;
+}
+
 .dropdown-list {
+
   background-color: white;
-  padding: 0 1rem 1rem 1rem;
+  padding: 5px 1rem 1rem 1rem;
   width: 100%;
 }
 

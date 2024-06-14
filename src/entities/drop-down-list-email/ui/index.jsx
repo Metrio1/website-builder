@@ -2,9 +2,10 @@ import './index.scss';
 import { useState } from 'react';
 import { Button, Flex } from 'antd';
 import SetText from '../../set-text/ui/index.jsx';
-import EmailCreation from "../../email-creation/ui/index.jsx";
+import EmailCreation from '../../email-creation/ui/index.jsx';
 
 export default function DropDownListEmail({ place, color }) {
+  const [size, setSize] = useState('large');
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -13,11 +14,11 @@ export default function DropDownListEmail({ place, color }) {
 
   return (
     <div className="dropdown">
-      <Button className="dropdown-button" onClick={toggleDropdown}>
+      <Button size={size} className="dropdown-button" onClick={toggleDropdown}>
         E-mail
       </Button>
       {isOpen && (
-        <div className="dropdown-list">
+        <div>
           <EmailCreation place={place} color={'white'} />
         </div>
       )}

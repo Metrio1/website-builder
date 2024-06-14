@@ -2,10 +2,11 @@ import './index.scss';
 import DropDownListMenu from '../../../entities/drop-down-list-menu/ui/index.jsx';
 import SetText from '../../../entities/set-text/ui/index.jsx';
 import { useEffect } from 'react';
-import BackButton from "../../../shared/back-button/ui/index.jsx";
+import BackButton from '../../../shared/back-button/ui/index.jsx';
+import SettingUpTop from '../../../entities/setting-up-top/ui/index.jsx';
+import DropDownListText from '../../../entities/drop-down-list-text/ui/index.jsx';
 
 export default function SettingUpSidebar({ setSidebarContent }) {
-
   useEffect(() => {
     const iframe = document.querySelector('iframe');
 
@@ -33,9 +34,15 @@ export default function SettingUpSidebar({ setSidebarContent }) {
 
   return (
     <div className="setting-up-sidebar">
-      <h2>Настройка сайдбара</h2>
-      <BackButton setSidebarContent={setSidebarContent}/>
-      <SetText place={'sidebar__text'} maxLength={10} textType={'small-header'} color={'white'} font={'Arial'} />
+      <SettingUpTop headerText={'Настройка меню'} setSidebarContent={setSidebarContent} />
+      <DropDownListText
+        name={'Заголовок'}
+        place={'sidebar__text'}
+        maxLength={10}
+        textType={'small-header'}
+        color={'white'}
+        font={'Arial'}
+      />
       <DropDownListMenu typesOfLinks={'sidebar__link'} maximumNumberOfLinks={10} />
     </div>
   );

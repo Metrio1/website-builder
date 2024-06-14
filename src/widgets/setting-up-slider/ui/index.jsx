@@ -1,9 +1,11 @@
+import './index.scss';
 import React, { useState } from 'react';
 import ImageUploader from '../../../entities/image-uploader/ui/index.jsx';
 import SettingsButton from '../../../shared/settings-button/ui/index.jsx';
 import DropDownListInteractiveBlock from '../../../entities/drop-down-list-interactive-block/ui/index.jsx';
-import BackButton from "../../../shared/back-button/ui/index.jsx";
-import {Button} from "antd";
+import BackButton from '../../../shared/back-button/ui/index.jsx';
+import { Button } from 'antd';
+import SettingUpTop from '../../../entities/setting-up-top/ui/index.jsx';
 
 export default function SettingUpSlider({ setSidebarContent }) {
   const [numberOfSlide, setNumberOfSlide] = useState(2);
@@ -20,7 +22,14 @@ export default function SettingUpSlider({ setSidebarContent }) {
   const [imageUploaders, setImageUploaders] = useState([
     {
       id: 1,
-      component: <ImageUploader key={0} numberOfSlide={1} onImageSelect={handleImageSelect} place={"swiper-wrapper"} />,
+      component: (
+        <ImageUploader
+          key={0}
+          numberOfSlide={1}
+          onImageSelect={handleImageSelect}
+          place={'swiper-wrapper'}
+        />
+      ),
     },
   ]);
 
@@ -48,7 +57,12 @@ export default function SettingUpSlider({ setSidebarContent }) {
     const newImageUploader = {
       id: newKey,
       component: (
-        <ImageUploader key={newKey} numberOfSlide={newKey} onImageSelect={handleImageSelect} place={"swiper-wrapper"} />
+        <ImageUploader
+          key={newKey}
+          numberOfSlide={newKey}
+          onImageSelect={handleImageSelect}
+          place={'swiper-wrapper'}
+        />
       ),
     };
     setImageUploaders((prevUploaders) => [...prevUploaders, newImageUploader]);
@@ -83,13 +97,12 @@ export default function SettingUpSlider({ setSidebarContent }) {
   };
 
   return (
-    <div>
-      <BackButton setSidebarContent={setSidebarContent} way={"SettingUpMain"} />
-      <h3>Настройка слайдера</h3>
-      <ul>
+    <div className="setting-up-slider">
+      <SettingUpTop headerText={'Настройка слайдера'} setSidebarContent={setSidebarContent} />
+      <div className="setting-up-container">
         {imageUploaders.map((uploader, index) => (
-          <li style={{marginTop: 30}} key={uploader.id}>
-            Слайд {uploader.id}
+          <div className="setting-up-container__element" key={uploader.id}>
+            <h3>Слайд {uploader.id}</h3>
             {uploader.component}
             <div className="interactive-block">
               <Button onClick={() => handleInteractiveBlock(uploader.id)}>
@@ -99,10 +112,10 @@ export default function SettingUpSlider({ setSidebarContent }) {
                 <DropDownListInteractiveBlock index={uploader.id} />
               )}
             </div>
-          </li>
+          </div>
         ))}
-      </ul>
-      {imageUploaders.length < 5 && <Button onClick={handleSlides}>Добавить слайд</Button>}
+        {imageUploaders.length < 5 && <Button onClick={handleSlides}>Добавить слайд</Button>}
+      </div>
     </div>
   );
 }

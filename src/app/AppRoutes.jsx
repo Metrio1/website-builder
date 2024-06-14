@@ -9,10 +9,6 @@ import ContentCustomization from '../pages/content-customization/ui/index.jsx';
 
 const routes = createBrowserRouter([
   {
-    path: '/start',
-    element: <Start />,
-  },
-  {
     path: '/',
     element: <Home />,
   },

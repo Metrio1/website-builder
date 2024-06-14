@@ -33,8 +33,8 @@ export default function LinkCreation({ numberOfLink, typesOfLinks }) {
   };
 
   return (
-    <div>
-      <h3 className={'link-creation'}>Создать ссылку</h3>
+    <div className="link-creation">
+      <h3 className={'link-creation__header'}>Создание ссылки</h3>
       <Input
         type="text"
         placeholder="Введите текст ссылки"
@@ -42,8 +42,13 @@ export default function LinkCreation({ numberOfLink, typesOfLinks }) {
         onChange={handleTextChange}
         maxLength={15}
       />
-      <Input type="text" placeholder="Введите URL ссылки" value={linkUrl} onChange={handleUrlChange} />
-      <Button onClick={handleLinkCreation}>Create Link</Button>
+      <Input
+        type="text"
+        placeholder="Введите URL ссылки"
+        value={linkUrl}
+        onChange={handleUrlChange}
+      />
+      <Button onClick={handleLinkCreation}>Создать ссылку</Button>
     </div>
   );
 }

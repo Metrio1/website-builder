@@ -3,10 +3,11 @@ import VideoUploader from '../../../entities/video-uploader/ui/index.jsx';
 import React, { useState } from 'react';
 import ImageUploader from '../../../entities/image-uploader/ui/index.jsx';
 import ImageUploaderList from '../../../entities/image-uploader-list/ui/index.jsx';
-import SetText from "../../../entities/set-text/ui/index.jsx";
-import SetButton from "../../../entities/set-button/ui/index.jsx";
-import BackButton from "../../../shared/back-button/ui/index.jsx";
-import {Button} from "antd";
+import SetText from '../../../entities/set-text/ui/index.jsx';
+import SetButton from '../../../entities/set-button/ui/index.jsx';
+import BackButton from '../../../shared/back-button/ui/index.jsx';
+import { Button } from 'antd';
+import DropDownListText from '../../../entities/drop-down-list-text/ui/index.jsx';
 
 export default function SettingUpListGrid({ setSidebarContent }) {
   const [numberOfSlide, setNumberOfSlide] = useState(1);
@@ -80,20 +81,30 @@ export default function SettingUpListGrid({ setSidebarContent }) {
 
   return (
     <div className={'setting-up-list-grid'}>
-      <BackButton setSidebarContent={setSidebarContent} way={"SettingUpMain"} />
+      <BackButton setSidebarContent={setSidebarContent} way={'SettingUpMain'} />
       <h3>Настройка списка</h3>
-      <ul>
+      <div>
         {imageUploaderLists.map((uploader) => (
-          <li style={{marginTop: 30}} key={uploader.id}>
-            Блок {uploader.id}
+          <div className="setting-up-container" key={uploader.id}>
+            <h3>Блок {uploader.id}</h3>
             {uploader.component}
-            <SetText maxLength={20} place={`header-element__${uploader.id}`} textType={'small-header'} />
-            <SetText maxLength={100} place={`text-element__${uploader.id}`} textType={'text'} />
+            <DropDownListText
+              name={'Заголовок'}
+              maxLength={20}
+              place={`header-element__${uploader.id}`}
+              textType={'small-header'}
+            />
+            <DropDownListText
+              name={'Описание'}
+              maxLength={100}
+              place={`text-element__${uploader.id}`}
+              textType={'text'}
+            />
             <SetButton place={`button-element__${uploader.id}`} />
-          </li>
+          </div>
         ))}
-      </ul>
-      {imageUploaderLists.length < 12 && <Button onClick={handleSlides}>Добавить блок</Button>}
+        {imageUploaderLists.length < 12 && <Button onClick={handleSlides}>Добавить блок</Button>}
+      </div>
     </div>
   );
 }

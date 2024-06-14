@@ -1,4 +1,23 @@
 .dropdown {
   width: 100%;
   overflow-y: auto;
+
+}
+
+.setting-up-container {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+
+
+  &__element > *{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    //width: 1;
+  }
+}
+
+.setting-up-container > * {
+  margin-top: 10px;
 }

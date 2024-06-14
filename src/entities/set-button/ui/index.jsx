@@ -1,8 +1,9 @@
 import './index.scss';
 import { useState } from 'react';
-import {Button, Input} from "antd";
+import { Button, Input } from 'antd';
 
 export default function SetButton({ place }) {
+  const [size, setSize] = useState('large');
   const [inputText, setInputText] = useState('');
   const [linkUrl, setLinkUrl] = useState('');
   const [isOpen, setIsOpen] = useState(false);
@@ -56,23 +57,26 @@ export default function SetButton({ place }) {
   };
 
   return (
-      <div>
-        <Button className="dropdown-button" onClick={toggleDropdown}>
-          Добавить кнопку
-        </Button>
-        {isOpen && (
-            <div className="input-container">
-              <h3>Введите текст для кнопки</h3>
-              <Input value={inputText} onChange={handleInputChange} maxLength={20} />
-              <h3>Введите ссылку для кнопки</h3>
-              <input
-                  type="text"
-                  placeholder="Введите URL"
-                  value={linkUrl}
-                  onChange={handleUrlChange}
-              />
-            </div>
-        )}
-      </div>
+    <div>
+      <Button size={size} className="dropdown-button" onClick={toggleDropdown}>
+        Добавить кнопку
+      </Button>
+      {isOpen && (
+        <div className="setting-up-container">
+          <Input
+            placeholder="Введите текст для кнопки"
+            value={inputText}
+            onChange={handleInputChange}
+            maxLength={20}
+          />
+          <Input
+            placeholder="Введите ссылку для кнопки"
+            type="text"
+            value={linkUrl}
+            onChange={handleUrlChange}
+          />
+        </div>
+      )}
+    </div>
   );
 }

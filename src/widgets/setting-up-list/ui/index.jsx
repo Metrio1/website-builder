@@ -5,10 +5,12 @@ import ImageUploader from '../../../entities/image-uploader/ui/index.jsx';
 import ImageUploaderList from '../../../entities/image-uploader-list/ui/index.jsx';
 import SetText from '../../../entities/set-text/ui/index.jsx';
 import SetButton from '../../../entities/set-button/ui/index.jsx';
-import BackButton from "../../../shared/back-button/ui/index.jsx";
-import {Button} from "antd";
+import BackButton from '../../../shared/back-button/ui/index.jsx';
+import { Button } from 'antd';
+import DropDownListText from '../../../entities/drop-down-list-text/ui/index.jsx';
 
 export default function SettingUpList({ setSidebarContent }) {
+  const [size, setSize] = useState('large');
   const [numberOfSlide, setNumberOfSlide] = useState(1);
   const [selectedImages, setSelectedImages] = useState({});
 
@@ -80,27 +82,36 @@ export default function SettingUpList({ setSidebarContent }) {
     }
   };
 
-
   return (
     <div className={'setting-up-list'}>
-      <BackButton setSidebarContent={setSidebarContent} way={"SettingUpMain"} />
+      <BackButton setSidebarContent={setSidebarContent} way={'SettingUpMain'} />
       <h3>Настройка списка</h3>
-      <ul>
+      <div className="setting-up-container">
         {imageUploaderLists.map((uploader) => (
-          <li style={{marginTop: 30}} key={uploader.id}>
-            Блок {uploader.id}
+          <div style={{ marginTop: 30 }} key={uploader.id}>
+            <h3>Блок {uploader.id}</h3>
             {uploader.component}
-            <SetText
+            <DropDownListText
+              name={'Заголовок списка'}
               maxLength={20}
               place={`list-flex__element__text-wrapper__header-element__${uploader.id}`}
               textType={'smallest-header'}
             />
-            <SetText maxLength={600} place={`list-flex__element__text-wrapper__text-element__${uploader.id}`} textType={'text'} />
+            <DropDownListText
+              name={'Описание списка'}
+              maxLength={600}
+              place={`list-flex__element__text-wrapper__text-element__${uploader.id}`}
+              textType={'text'}
+            />
             <SetButton place={`list-flex__element__button-element__${uploader.id}`} />
-          </li>
+          </div>
         ))}
-      </ul>
-      {imageUploaderLists.length < 12 && <Button onClick={handleSlides}>Добавить блок</Button>}
+      </div>
+      {imageUploaderLists.length < 12 && (
+        <Button size={size} onClick={handleSlides}>
+          Добавить блок
+        </Button>
+      )}
     </div>
   );
 }

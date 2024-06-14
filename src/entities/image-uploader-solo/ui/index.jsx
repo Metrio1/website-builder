@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Button, Input} from "antd";
+import { Button, Input } from 'antd';
 
 export default function ImageUploaderSolo() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -32,7 +32,7 @@ export default function ImageUploaderSolo() {
           const iframe = document.querySelector('iframe');
           const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
           const imageBox = iframeDocument.querySelector('.image-text__image');
-          
+
           imageBox.innerHTML = '';
 
           const img = document.createElement('img');

@@ -1,8 +1,10 @@
+import './index.scss';
 import React, { useState } from 'react';
 import { Button, Flex } from 'antd';
 import { Input } from 'antd';
 
 export default function DropDownListPhone({ place, color }) {
+  const [size, setSize] = useState('large');
   const [linkText, setLinkText] = useState('');
   const [linkUrl, setLinkUrl] = useState('');
   const [isOpen, setIsOpen] = useState(false);
@@ -44,7 +46,7 @@ export default function DropDownListPhone({ place, color }) {
 
   return (
     <div className="dropdown">
-      <Button className="dropdown-button" onClick={toggleDropdown}>
+      <Button size={size} className="dropdown-button" onClick={toggleDropdown}>
         Телефон
       </Button>
       {isOpen && (
@@ -63,7 +65,9 @@ export default function DropDownListPhone({ place, color }) {
             value={linkUrl}
             onChange={(event) => setLinkUrl(event.target.value)}
           />
-          <Button onClick={handleLinkCreation}>Create Link</Button>
+          <Button className="dropdown-list__add-phone" onClick={handleLinkCreation}>
+            Создать номер телефона
+          </Button>
         </div>
       )}
     </div>

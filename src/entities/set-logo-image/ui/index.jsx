@@ -2,7 +2,7 @@ import './index.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLogoImage } from '../model/logoImage.slice.js';
 import { useLazyGetTagQuery } from '../../layout-pages/api/api.js';
-import {Input} from "antd";
+import { Input } from 'antd';
 
 export default function SetLogoImage() {
   const uploadedImage = useSelector((state) => state.logoImageSlice.logoImage);
@@ -30,7 +30,7 @@ export default function SetLogoImage() {
   };
 
   return (
-    <div>
+    <div className="set-logo">
       <Input type="file" accept="image/*" onChange={handleLogoImageChange} />
       {uploadedImage && (
         <div>
@@ -40,4 +40,4 @@ export default function SetLogoImage() {
       )}
     </div>
   );
-};
+}

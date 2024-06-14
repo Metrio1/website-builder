@@ -3,7 +3,8 @@ import { Button, Flex } from 'antd';
 import { useState } from 'react';
 import SetText from '../../set-text/ui/index.jsx';
 
-export default function DropDownListText() {
+export default function DropDownListText({ name, place, font, textType, maxLength, color }) {
+  const [size, setSize] = useState('large');
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -13,12 +14,18 @@ export default function DropDownListText() {
   return (
     <div className="dropdown">
       <h1></h1>
-      <Button className="dropdown-button" onClick={toggleDropdown}>
-        Текст
+      <Button size={size} className="dropdown-button" onClick={toggleDropdown}>
+        {name}
       </Button>
       {isOpen && (
         <div className="dropdown-list">
-          <SetText maxLength={150} place={'footer-top1'} color={'white'} font={'Arial'} />
+          <SetText
+            maxLength={maxLength}
+            place={place}
+            color={color}
+            font={font}
+            textType={textType}
+          />
         </div>
       )}
     </div>
